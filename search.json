@@ -1,0 +1,44 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "akey7",
+    "section": "",
+    "text": "Julia: Positive and Negative Definite Matrices\n\n\n\n\n\n\njulia\n\n\nmath\n\n\n\n\n\n\n\n\n\nMar 19, 2024\n\n\nAlicia\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "posts/welcome/index.html",
+    "href": "posts/welcome/index.html",
+    "title": "Welcome To My Blog",
+    "section": "",
+    "text": "This is the first post in a Quarto blog. Welcome!\n\nSince this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
+  },
+  {
+    "objectID": "posts/post-with-code/index.html",
+    "href": "posts/post-with-code/index.html",
+    "title": "Julia: Positive and Negative Definite Matrices",
+    "section": "",
+    "text": "These functions implement the expression, which can calculate scalar quantities when given x1 and x2 components of a 2-element vector.\n\\[ f(\\mathbf x) = \\mathbf x^T \\mathbf A \\mathbf x \\]\nIn this case, I take the matrix A to positive definite or negative definite. Then, I pass the same vectors into the function to see the behavior of positive or negative definite matrices.\n\n\nThe 2x2 identity matrix is positive definite:\n\\[\n\\begin{bmatrix}\n1 & 0 \\\\\n0 & 1 \\\\\n\\end{bmatrix}\n\\]\n\nfunction pos_definite(x1::Float64, x2::Float64)\n    A = [1.0 0.0; 0.0 1.0]\n    x = [x1; x2]\n    x' * A * x\nend\n\npos_definite (generic function with 1 method)\n\n\n\n\n\nThe following 2x2 matrix is negative definite:\n\\[\n\\begin{bmatrix}\n-1 & 0 \\\\\n0 & -2 \\\\\n\\end{bmatrix}\n\\]\n\nfunction neg_definite(x1::Float64, x2::Float64)\n    A = [-1.0 0.0; 0.0 -2.0]\n    x = [x1; x2]\n    x' * A * x\nend\n\nneg_definite (generic function with 1 method)"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "Hi! I am Alicia Key, a PhD student in Structural Biology, Biochemistry, and Biophysics. This is a site where I put fun side projects I do from time to time."
+  },
+  {
+    "objectID": "posts/post-with-code/index.html#functions-to-create-surfaces",
+    "href": "posts/post-with-code/index.html#functions-to-create-surfaces",
+    "title": "Julia: Positive and Negative Definite Matrices",
+    "section": "",
+    "text": "These functions implement the expression, which can calculate scalar quantities when given x1 and x2 components of a 2-element vector.\n\\[ f(\\mathbf x) = \\mathbf x^T \\mathbf A \\mathbf x \\]\nIn this case, I take the matrix A to positive definite or negative definite. Then, I pass the same vectors into the function to see the behavior of positive or negative definite matrices.\n\n\nThe 2x2 identity matrix is positive definite:\n\\[\n\\begin{bmatrix}\n1 & 0 \\\\\n0 & 1 \\\\\n\\end{bmatrix}\n\\]\n\nfunction pos_definite(x1::Float64, x2::Float64)\n    A = [1.0 0.0; 0.0 1.0]\n    x = [x1; x2]\n    x' * A * x\nend\n\npos_definite (generic function with 1 method)\n\n\n\n\n\nThe following 2x2 matrix is negative definite:\n\\[\n\\begin{bmatrix}\n-1 & 0 \\\\\n0 & -2 \\\\\n\\end{bmatrix}\n\\]\n\nfunction neg_definite(x1::Float64, x2::Float64)\n    A = [-1.0 0.0; 0.0 -2.0]\n    x = [x1; x2]\n    x' * A * x\nend\n\nneg_definite (generic function with 1 method)"
+  },
+  {
+    "objectID": "posts/post-with-code/index.html#surface-plots",
+    "href": "posts/post-with-code/index.html#surface-plots",
+    "title": "Julia: Positive and Negative Definite Matrices",
+    "section": "Surface plots",
+    "text": "Surface plots\n\nPositive definite plot\n\nxs = -5:0.1:5\nys = -5:0.1:5\n\nzs = [pos_definite(x, y) for x in xs, y in ys]\n\nsurface(xs, ys, zs, title=\"Positive Definite Matrix Transform\", xlabel=\"x\", ylabel=\"y\", zlabel=\"z\", cmap=:cool)\n\n\n\n\n  \n    \n  \n\n\n\n  \n    \n  \n\n\n  \n    \n  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n  \n    \n  \n\n\n\n\n\n\n\n\n\n\nNegative definite plot\n\nxs = -5:0.1:5\nys = -5:0.1:5\n\nzs = [neg_definite(x, y) for x in xs, y in ys]\n\nsurface(xs, ys, zs, title=\"Negative Definite Matrix Transform\", xlabel=\"x\", ylabel=\"y\", zlabel=\"z\", cmap=:cool)"
+  }
+]

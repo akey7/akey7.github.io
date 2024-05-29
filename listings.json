@@ -5,7 +5,15 @@
       "/posts/moldyn/index.html",
       "/posts/positive-and-negative-definite-matrices/index.html",
       "/posts/simple-gradient-descent/index.html",
-      "/posts/fftpipe/index.html"
+      "/posts/fftpipe/index.html",
+      "/posts/lennard-jones/index.html",
+      "/posts/hydrogen-atom/index.html",
+      "/posts/rydberg-equation-and-hydrogen-spectra/index.html",
+      "/posts/quantum-harmonic-oscillator/index.html",
+      "/posts/two-non-interacting-particles/index.html",
+      "/posts/particle-in-box/index.html",
+      "/posts/solubility-clustering/index.html",
+      "/posts/solubility-regression/index.html"
     ]
   }
 ]

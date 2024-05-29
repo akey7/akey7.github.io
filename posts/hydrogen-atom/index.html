@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.554">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Alicia Key">
+<meta name="dcterms.date" content="2021-07-16">
+
+<title>akey7 - Python: Hydrogen Atom</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">akey7</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/akey7"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Python: Hydrogen Atom</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">python</div>
+                <div class="quarto-category">physics</div>
+                <div class="quarto-category">chemistry</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Alicia Key </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">July 16, 2021</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<p>In this post, I define a class to model the behavior of a hydrogen atom. In the process, I get to solve integrals like the following numerically to test my code:</p>
+<p><span class="math display">\[ \int_0^{\pi} \int_0^{2\pi} \lvert Y_{l, m_l} \rvert ^2 \sin \theta d \theta d \phi = 1 \]</span></p>
+<p>This post consists of a arge block of Python code up front, and then explanations and plots below. Let’s get started!</p>
+<section id="define-a-class-for-the-hydrogenic-atom" class="level2">
+<h2 class="anchored" data-anchor-id="define-a-class-for-the-hydrogenic-atom">Define a class for the hydrogenic atom</h2>
+<p>This Python class has wavefunctions and energies. It is based on Chapter 10 of <em>Physical Chemistry, 8th Ed</em> by Atkins and De Paula. The goal of the Python class is to reproduce some of the plots and reproduce results with numeric integration found in Chapter 10.</p>
+<div id="7ef7c396" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib <span class="im">import</span> cm</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> math <span class="im">import</span> exp, sqrt, pi, cos, sin</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.integrate <span class="im">import</span> dblquad, tplquad, quad</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> cmath</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> HydrogenicAtom:</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">    This class models the wavefunctions and energy levels of a hydrogenic atom.</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">    It assumes an infinitely heavy nucleus, so the mass is that of the</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co">    electron.</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co">    Masses are in kg, distances are in m</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co">    This whole class uses complex numbers and math functions.</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, n<span class="op">=</span><span class="dv">1</span>, l<span class="op">=</span><span class="dv">0</span>, ml<span class="op">=</span><span class="dv">0</span>, z<span class="op">=</span><span class="dv">1</span>):</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="co">        This sets some instance attributes and a few constant used throughout the</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="co">        class.</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="co">        </span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="co">        Leave z at 1 for hydrogen.</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="co">        </span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="co">        Parameters</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="co">        ----------    </span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="co">        n: int</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="co">            Principal quantum number.</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="co">            </span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="co">        l: int</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="co">            Orbital angular momentum quantum number.</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="co">            </span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="co">        ml: int</span></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="co">            Magnetic quantum number.</span></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="co">            </span></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="co">        z: int</span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="co">            Number of protons in the nucleus. Defaults to 1.</span></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="co">        """</span></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.a0 <span class="op">=</span> <span class="fl">5.29e-11</span>       <span class="co"># m</span></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.me <span class="op">=</span> <span class="fl">9.10938356e-31</span> <span class="co"># kg</span></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.e0 <span class="op">=</span> <span class="fl">8.85418782e-12</span> <span class="co"># Permitivity of free space</span></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.e_charge <span class="op">=</span> <span class="fl">1.60217662e-19</span> <span class="co"># Coulombs, charge of electron</span></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.hbar <span class="op">=</span> <span class="fl">1.054571817e-34</span>  <span class="co"># Reduced Planck's constant</span></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.n <span class="op">=</span> n</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.l <span class="op">=</span> l</span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.ml <span class="op">=</span> ml</span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.z <span class="op">=</span> z</span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> rho(<span class="va">self</span>, r):</span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""</span></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a><span class="co">        Calculates the rho part of the radial function. It assumes an infinitely</span></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a><span class="co">        heavy nucleus.</span></span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a><span class="co">        </span></span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a><span class="co">        From Atkins and de Paula, Table 10.1, page 324</span></span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a><span class="co">        </span></span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a><span class="co">        Parameters</span></span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a><span class="co">        ----------</span></span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a><span class="co">        r: float</span></span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a><span class="co">            The distance, in meters being calculated</span></span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a><span class="co">            </span></span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a><span class="co">        Returns</span></span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a><span class="co">        -------</span></span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a><span class="co">        float</span></span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a><span class="co">            The value of rho.</span></span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a><span class="co">        """</span></span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> (<span class="dv">2</span> <span class="op">*</span> <span class="va">self</span>.z <span class="op">/</span> <span class="va">self</span>.n <span class="op">/</span> <span class="va">self</span>.a0) <span class="op">*</span> r</span>
+<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> radial(<span class="va">self</span>, r):</span>
+<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""</span></span>
+<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a><span class="co">        The radial part of the wavefunction</span></span>
+<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a><span class="co">        </span></span>
+<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a><span class="co">        Parameters</span></span>
+<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a><span class="co">        ----------</span></span>
+<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a><span class="co">        r: float</span></span>
+<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a><span class="co">            Radius, in meters</span></span>
+<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a><span class="co">            </span></span>
+<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a><span class="co">        Returns</span></span>
+<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a><span class="co">        -------</span></span>
+<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a><span class="co">        complex</span></span>
+<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a><span class="co">            The value of the radial wavefunction, which only uses the real</span></span>
+<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a><span class="co">            part of the complex value.</span></span>
+<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a><span class="co">            </span></span>
+<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a><span class="co">        Raises</span></span>
+<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a><span class="co">        ------</span></span>
+<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a><span class="co">        Exception</span></span>
+<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a><span class="co">            Raises an exception for invalid n and l</span></span>
+<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a><span class="co">        """</span></span>
+<span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a>        za32 <span class="op">=</span> (<span class="va">self</span>.z <span class="op">/</span> <span class="va">self</span>.a0) <span class="op">**</span> (<span class="dv">3</span><span class="op">/</span><span class="dv">2</span>)</span>
+<span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a>        rho <span class="op">=</span> <span class="va">self</span>.rho(r)</span>
+<span id="cb1-92"><a href="#cb1-92" aria-hidden="true" tabindex="-1"></a>        exp_rho <span class="op">=</span> exp(<span class="op">-</span>rho <span class="op">/</span> <span class="fl">2.0</span>)</span>
+<span id="cb1-93"><a href="#cb1-93" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb1-94"><a href="#cb1-94" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="va">self</span>.n <span class="op">==</span> <span class="dv">1</span> <span class="kw">and</span> <span class="va">self</span>.l <span class="op">==</span> <span class="dv">0</span>:  <span class="co"># 1s orbital</span></span>
+<span id="cb1-95"><a href="#cb1-95" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="dv">2</span> <span class="op">*</span> za32 <span class="op">*</span> exp_rho</span>
+<span id="cb1-96"><a href="#cb1-96" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> <span class="va">self</span>.n <span class="op">==</span> <span class="dv">2</span> <span class="kw">and</span> <span class="va">self</span>.l <span class="op">==</span> <span class="dv">0</span>:  <span class="co"># 2s orbital</span></span>
+<span id="cb1-97"><a href="#cb1-97" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> (<span class="fl">1.0</span> <span class="op">/</span> sqrt(<span class="dv">8</span>)) <span class="op">*</span> za32 <span class="op">*</span> (<span class="fl">2.0</span> <span class="op">-</span> rho) <span class="op">*</span> exp_rho</span>
+<span id="cb1-98"><a href="#cb1-98" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> <span class="va">self</span>.n <span class="op">==</span> <span class="dv">2</span> <span class="kw">and</span> <span class="va">self</span>.l <span class="op">==</span> <span class="dv">1</span>:  <span class="co"># 2p orbital</span></span>
+<span id="cb1-99"><a href="#cb1-99" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> (<span class="fl">1.0</span> <span class="op">/</span> sqrt(<span class="dv">24</span>)) <span class="op">*</span> za32 <span class="op">*</span> rho <span class="op">*</span> exp_rho</span>
+<span id="cb1-100"><a href="#cb1-100" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> <span class="va">self</span>.n <span class="op">==</span> <span class="dv">3</span> <span class="kw">and</span> <span class="va">self</span>.l <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb1-101"><a href="#cb1-101" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> (<span class="fl">1.0</span> <span class="op">/</span> sqrt(<span class="dv">243</span>)) <span class="op">*</span> za32 <span class="op">*</span> (<span class="fl">6.0</span> <span class="op">-</span> <span class="dv">6</span> <span class="op">*</span> rho <span class="op">+</span> rho <span class="op">**</span> <span class="dv">2</span>) <span class="op">*</span> exp_rho</span>
+<span id="cb1-102"><a href="#cb1-102" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> <span class="va">self</span>.n <span class="op">==</span> <span class="dv">3</span> <span class="kw">and</span> <span class="va">self</span>.l <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="cb1-103"><a href="#cb1-103" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> (<span class="fl">1.0</span> <span class="op">/</span> sqrt(<span class="dv">486</span>)) <span class="op">*</span> za32 <span class="op">*</span> (<span class="fl">4.0</span> <span class="op">-</span> rho) <span class="op">*</span> rho <span class="op">*</span> exp_rho</span>
+<span id="cb1-104"><a href="#cb1-104" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> <span class="va">self</span>.n <span class="op">==</span> <span class="dv">3</span> <span class="kw">and</span> <span class="va">self</span>.l <span class="op">==</span> <span class="dv">2</span>:</span>
+<span id="cb1-105"><a href="#cb1-105" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> (<span class="fl">1.0</span> <span class="op">/</span> sqrt(<span class="dv">2430</span>)) <span class="op">*</span> za32 <span class="op">*</span> rho <span class="op">**</span> <span class="dv">2</span> <span class="op">*</span> exp_rho</span>
+<span id="cb1-106"><a href="#cb1-106" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb1-107"><a href="#cb1-107" aria-hidden="true" tabindex="-1"></a>            <span class="cf">raise</span> <span class="pp">Exception</span>(<span class="ss">f'No radial function for </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>n<span class="sc">}</span><span class="ss"> and </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>l<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb1-108"><a href="#cb1-108" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb1-109"><a href="#cb1-109" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> spherical_harmonic(<span class="va">self</span>, theta, phi):</span>
+<span id="cb1-110"><a href="#cb1-110" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""</span></span>
+<span id="cb1-111"><a href="#cb1-111" aria-hidden="true" tabindex="-1"></a><span class="co">        Find the value of the spherical harmonic given an quantum numbers</span></span>
+<span id="cb1-112"><a href="#cb1-112" aria-hidden="true" tabindex="-1"></a><span class="co">        l, ml and coordinates theta, phi.</span></span>
+<span id="cb1-113"><a href="#cb1-113" aria-hidden="true" tabindex="-1"></a><span class="co">        </span></span>
+<span id="cb1-114"><a href="#cb1-114" aria-hidden="true" tabindex="-1"></a><span class="co">        From Atkins and de Paula, Table 9.3, page 302</span></span>
+<span id="cb1-115"><a href="#cb1-115" aria-hidden="true" tabindex="-1"></a><span class="co">        </span></span>
+<span id="cb1-116"><a href="#cb1-116" aria-hidden="true" tabindex="-1"></a><span class="co">        Parameters</span></span>
+<span id="cb1-117"><a href="#cb1-117" aria-hidden="true" tabindex="-1"></a><span class="co">        ----------    </span></span>
+<span id="cb1-118"><a href="#cb1-118" aria-hidden="true" tabindex="-1"></a><span class="co">        theta: float</span></span>
+<span id="cb1-119"><a href="#cb1-119" aria-hidden="true" tabindex="-1"></a><span class="co">            Theta coordinate, from 0 to pi</span></span>
+<span id="cb1-120"><a href="#cb1-120" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-121"><a href="#cb1-121" aria-hidden="true" tabindex="-1"></a><span class="co">        phi: float</span></span>
+<span id="cb1-122"><a href="#cb1-122" aria-hidden="true" tabindex="-1"></a><span class="co">            Phi coordinate, from 0 to 2*pi</span></span>
+<span id="cb1-123"><a href="#cb1-123" aria-hidden="true" tabindex="-1"></a><span class="co">            </span></span>
+<span id="cb1-124"><a href="#cb1-124" aria-hidden="true" tabindex="-1"></a><span class="co">        Returns</span></span>
+<span id="cb1-125"><a href="#cb1-125" aria-hidden="true" tabindex="-1"></a><span class="co">        -------</span></span>
+<span id="cb1-126"><a href="#cb1-126" aria-hidden="true" tabindex="-1"></a><span class="co">        complex</span></span>
+<span id="cb1-127"><a href="#cb1-127" aria-hidden="true" tabindex="-1"></a><span class="co">            The value of the spherical harmonic, which is a complex value</span></span>
+<span id="cb1-128"><a href="#cb1-128" aria-hidden="true" tabindex="-1"></a><span class="co">            </span></span>
+<span id="cb1-129"><a href="#cb1-129" aria-hidden="true" tabindex="-1"></a><span class="co">        Raises</span></span>
+<span id="cb1-130"><a href="#cb1-130" aria-hidden="true" tabindex="-1"></a><span class="co">        ------</span></span>
+<span id="cb1-131"><a href="#cb1-131" aria-hidden="true" tabindex="-1"></a><span class="co">        Exception</span></span>
+<span id="cb1-132"><a href="#cb1-132" aria-hidden="true" tabindex="-1"></a><span class="co">            Raises an Exception for an invalid combination of l and ml</span></span>
+<span id="cb1-133"><a href="#cb1-133" aria-hidden="true" tabindex="-1"></a><span class="co">        """</span></span>
+<span id="cb1-134"><a href="#cb1-134" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="va">self</span>.l <span class="op">==</span> <span class="dv">0</span> <span class="kw">and</span> <span class="va">self</span>.ml <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb1-135"><a href="#cb1-135" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> sqrt(<span class="dv">1</span> <span class="op">/</span> <span class="fl">4.0</span> <span class="op">/</span> pi)</span>
+<span id="cb1-136"><a href="#cb1-136" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb1-137"><a href="#cb1-137" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> <span class="va">self</span>.l <span class="op">==</span> <span class="dv">1</span> <span class="kw">and</span> <span class="va">self</span>.ml <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb1-138"><a href="#cb1-138" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> sqrt(<span class="fl">3.0</span> <span class="op">/</span> <span class="fl">4.0</span> <span class="op">/</span> pi) <span class="op">*</span> cos(theta)</span>
+<span id="cb1-139"><a href="#cb1-139" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> <span class="va">self</span>.l <span class="op">==</span> <span class="dv">1</span> <span class="kw">and</span> <span class="va">self</span>.ml <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="cb1-140"><a href="#cb1-140" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="op">-</span>sqrt(<span class="fl">3.0</span> <span class="op">/</span> <span class="fl">8.0</span> <span class="op">/</span> pi) <span class="op">*</span> sin(theta) <span class="op">*</span> cmath.exp(<span class="ot">1j</span> <span class="op">*</span> phi)</span>
+<span id="cb1-141"><a href="#cb1-141" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> <span class="va">self</span>.l <span class="op">==</span> <span class="dv">1</span> <span class="kw">and</span> <span class="va">self</span>.ml <span class="op">==</span> <span class="op">-</span><span class="dv">1</span>:</span>
+<span id="cb1-142"><a href="#cb1-142" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="op">-</span>sqrt(<span class="fl">3.0</span> <span class="op">/</span> <span class="fl">8.0</span> <span class="op">/</span> pi) <span class="op">*</span> sin(theta) <span class="op">*</span> cmath.exp(<span class="op">-</span><span class="ot">1j</span> <span class="op">*</span> phi)</span>
+<span id="cb1-143"><a href="#cb1-143" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb1-144"><a href="#cb1-144" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> <span class="va">self</span>.l <span class="op">==</span> <span class="dv">2</span> <span class="kw">and</span> <span class="va">self</span>.ml <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb1-145"><a href="#cb1-145" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> sqrt(<span class="fl">5.0</span> <span class="op">/</span> <span class="fl">16.0</span> <span class="op">/</span> pi) <span class="op">*</span> (<span class="dv">3</span> <span class="op">*</span> cos(theta)<span class="op">**</span> <span class="dv">2</span> <span class="op">-</span> <span class="dv">1</span>)</span>
+<span id="cb1-146"><a href="#cb1-146" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> <span class="va">self</span>.l <span class="op">==</span> <span class="dv">2</span> <span class="kw">and</span> <span class="va">self</span>.ml <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="cb1-147"><a href="#cb1-147" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="op">-</span>sqrt(<span class="fl">15.0</span> <span class="op">/</span> <span class="fl">8.0</span> <span class="op">/</span> pi) <span class="op">*</span> cos(theta) <span class="op">*</span> sin(theta) <span class="op">*</span> cmath.exp(<span class="ot">1j</span> <span class="op">*</span> phi)</span>
+<span id="cb1-148"><a href="#cb1-148" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> <span class="va">self</span>.l <span class="op">==</span> <span class="dv">2</span> <span class="kw">and</span> <span class="va">self</span>.ml <span class="op">==</span> <span class="op">-</span><span class="dv">1</span>:</span>
+<span id="cb1-149"><a href="#cb1-149" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> sqrt(<span class="fl">15.0</span> <span class="op">/</span> <span class="fl">8.0</span> <span class="op">/</span> pi) <span class="op">*</span> cos(theta) <span class="op">*</span> sin(theta) <span class="op">*</span> cmath.exp(<span class="op">-</span><span class="ot">1j</span> <span class="op">*</span> phi)</span>
+<span id="cb1-150"><a href="#cb1-150" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> <span class="va">self</span>.l <span class="op">==</span> <span class="dv">2</span> <span class="kw">and</span> <span class="va">self</span>.ml <span class="op">==</span> <span class="dv">2</span>:</span>
+<span id="cb1-151"><a href="#cb1-151" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> sqrt(<span class="fl">15.0</span> <span class="op">/</span> <span class="fl">32.0</span> <span class="op">/</span> pi) <span class="op">*</span> sin(theta) <span class="op">**</span> <span class="dv">2</span> <span class="op">*</span> cmath.exp(<span class="ot">2j</span> <span class="op">*</span> phi)</span>
+<span id="cb1-152"><a href="#cb1-152" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> <span class="va">self</span>.l <span class="op">==</span> <span class="dv">2</span> <span class="kw">and</span> <span class="va">self</span>.ml <span class="op">==</span> <span class="op">-</span><span class="dv">2</span>:</span>
+<span id="cb1-153"><a href="#cb1-153" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> sqrt(<span class="fl">15.0</span> <span class="op">/</span> <span class="fl">32.0</span> <span class="op">/</span> pi) <span class="op">*</span> sin(theta) <span class="op">**</span> <span class="dv">2</span> <span class="op">*</span> cmath.exp(<span class="op">-</span><span class="ot">2j</span> <span class="op">*</span> phi)</span>
+<span id="cb1-154"><a href="#cb1-154" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb1-155"><a href="#cb1-155" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> <span class="va">self</span>.l <span class="op">==</span> <span class="dv">3</span> <span class="kw">and</span> <span class="va">self</span>.ml <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb1-156"><a href="#cb1-156" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> sqrt(<span class="fl">7.0</span> <span class="op">/</span> <span class="fl">16.0</span> <span class="op">/</span> pi) <span class="op">*</span> (<span class="dv">5</span> <span class="op">*</span> cos(theta) <span class="op">**</span> <span class="dv">3</span> <span class="op">-</span> <span class="dv">3</span> <span class="op">*</span> cos(theta))</span>
+<span id="cb1-157"><a href="#cb1-157" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> <span class="va">self</span>.l <span class="op">==</span> <span class="dv">3</span> <span class="kw">and</span> <span class="va">self</span>.ml <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="cb1-158"><a href="#cb1-158" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="op">-</span>sqrt(<span class="fl">21.0</span> <span class="op">/</span> <span class="fl">64.0</span> <span class="op">/</span> pi) <span class="op">*</span> (<span class="dv">5</span> <span class="op">*</span> cos(theta) <span class="op">**</span> <span class="dv">2</span> <span class="op">-</span> <span class="dv">1</span>) <span class="op">*</span> sin(theta) <span class="op">*</span> cmath.exp(<span class="ot">1j</span> <span class="op">*</span> phi)</span>
+<span id="cb1-159"><a href="#cb1-159" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> <span class="va">self</span>.l <span class="op">==</span> <span class="dv">3</span> <span class="kw">and</span> <span class="va">self</span>.ml <span class="op">==</span> <span class="op">-</span><span class="dv">1</span>:</span>
+<span id="cb1-160"><a href="#cb1-160" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> sqrt(<span class="fl">21.0</span> <span class="op">/</span> <span class="fl">64.0</span> <span class="op">/</span> pi) <span class="op">*</span> (<span class="dv">5</span> <span class="op">*</span> cos(theta) <span class="op">**</span> <span class="dv">2</span> <span class="op">-</span> <span class="dv">1</span>) <span class="op">*</span> sin(theta) <span class="op">*</span> cmath.exp(<span class="op">-</span><span class="ot">1j</span> <span class="op">*</span> phi)</span>
+<span id="cb1-161"><a href="#cb1-161" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> <span class="va">self</span>.l <span class="op">==</span> <span class="dv">3</span> <span class="kw">and</span> <span class="va">self</span>.ml <span class="op">==</span> <span class="dv">2</span>:</span>
+<span id="cb1-162"><a href="#cb1-162" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> sqrt(<span class="fl">105.0</span> <span class="op">/</span> <span class="fl">32.0</span> <span class="op">/</span> pi) <span class="op">*</span> sin(theta) <span class="op">**</span> <span class="dv">2</span> <span class="op">*</span> cos(theta) <span class="op">*</span> cmath.exp(<span class="ot">2j</span> <span class="op">*</span> phi)</span>
+<span id="cb1-163"><a href="#cb1-163" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> <span class="va">self</span>.l <span class="op">==</span> <span class="dv">3</span> <span class="kw">and</span> <span class="va">self</span>.ml <span class="op">==</span> <span class="op">-</span><span class="dv">2</span>:</span>
+<span id="cb1-164"><a href="#cb1-164" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> sqrt(<span class="fl">105.0</span> <span class="op">/</span> <span class="fl">32.0</span> <span class="op">/</span> pi) <span class="op">*</span> sin(theta) <span class="op">**</span> <span class="dv">2</span> <span class="op">*</span> cos(theta) <span class="op">*</span> cmath.exp(<span class="op">-</span><span class="ot">2j</span> <span class="op">*</span> phi)</span>
+<span id="cb1-165"><a href="#cb1-165" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> <span class="va">self</span>.l <span class="op">==</span> <span class="dv">3</span> <span class="kw">and</span> <span class="va">self</span>.ml <span class="op">==</span> <span class="dv">3</span>:</span>
+<span id="cb1-166"><a href="#cb1-166" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="op">-</span>sqrt(<span class="fl">35.0</span> <span class="op">/</span> <span class="fl">64.0</span> <span class="op">/</span> pi) <span class="op">*</span> sin(theta) <span class="op">**</span> <span class="dv">3</span> <span class="op">*</span> cmath.exp(<span class="ot">3j</span> <span class="op">*</span> phi)</span>
+<span id="cb1-167"><a href="#cb1-167" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> <span class="va">self</span>.l <span class="op">==</span> <span class="dv">3</span> <span class="kw">and</span> <span class="va">self</span>.ml <span class="op">==</span> <span class="op">-</span><span class="dv">3</span>:</span>
+<span id="cb1-168"><a href="#cb1-168" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> sqrt(<span class="fl">35.0</span> <span class="op">/</span> <span class="fl">64.0</span> <span class="op">/</span> pi) <span class="op">*</span> sin(theta) <span class="op">**</span> <span class="dv">3</span> <span class="op">*</span> cmath.exp(<span class="op">-</span><span class="ot">3j</span> <span class="op">*</span> phi)</span>
+<span id="cb1-169"><a href="#cb1-169" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb1-170"><a href="#cb1-170" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb1-171"><a href="#cb1-171" aria-hidden="true" tabindex="-1"></a>            <span class="cf">raise</span> <span class="pp">Exception</span>(<span class="ss">f'No equation for l=</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>l<span class="sc">}</span><span class="ss"> and ml=</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>ml<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb1-172"><a href="#cb1-172" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb1-173"><a href="#cb1-173" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> wavefunction(<span class="va">self</span>, r, theta, phi):</span>
+<span id="cb1-174"><a href="#cb1-174" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""</span></span>
+<span id="cb1-175"><a href="#cb1-175" aria-hidden="true" tabindex="-1"></a><span class="co">        Returns the value of the wavefunction at the given location.</span></span>
+<span id="cb1-176"><a href="#cb1-176" aria-hidden="true" tabindex="-1"></a><span class="co">        </span></span>
+<span id="cb1-177"><a href="#cb1-177" aria-hidden="true" tabindex="-1"></a><span class="co">        Parameters</span></span>
+<span id="cb1-178"><a href="#cb1-178" aria-hidden="true" tabindex="-1"></a><span class="co">        ----------</span></span>
+<span id="cb1-179"><a href="#cb1-179" aria-hidden="true" tabindex="-1"></a><span class="co">        r: float</span></span>
+<span id="cb1-180"><a href="#cb1-180" aria-hidden="true" tabindex="-1"></a><span class="co">            The r value, from 0 to infinity</span></span>
+<span id="cb1-181"><a href="#cb1-181" aria-hidden="true" tabindex="-1"></a><span class="co">            </span></span>
+<span id="cb1-182"><a href="#cb1-182" aria-hidden="true" tabindex="-1"></a><span class="co">        theta: float</span></span>
+<span id="cb1-183"><a href="#cb1-183" aria-hidden="true" tabindex="-1"></a><span class="co">            The theta value, from 0 to pi</span></span>
+<span id="cb1-184"><a href="#cb1-184" aria-hidden="true" tabindex="-1"></a><span class="co">            </span></span>
+<span id="cb1-185"><a href="#cb1-185" aria-hidden="true" tabindex="-1"></a><span class="co">        phi: float</span></span>
+<span id="cb1-186"><a href="#cb1-186" aria-hidden="true" tabindex="-1"></a><span class="co">            The phi value, from 0 to 2*pi</span></span>
+<span id="cb1-187"><a href="#cb1-187" aria-hidden="true" tabindex="-1"></a><span class="co">            </span></span>
+<span id="cb1-188"><a href="#cb1-188" aria-hidden="true" tabindex="-1"></a><span class="co">        Returns</span></span>
+<span id="cb1-189"><a href="#cb1-189" aria-hidden="true" tabindex="-1"></a><span class="co">        -------</span></span>
+<span id="cb1-190"><a href="#cb1-190" aria-hidden="true" tabindex="-1"></a><span class="co">        complex</span></span>
+<span id="cb1-191"><a href="#cb1-191" aria-hidden="true" tabindex="-1"></a><span class="co">            The complex value of the wavefunction.</span></span>
+<span id="cb1-192"><a href="#cb1-192" aria-hidden="true" tabindex="-1"></a><span class="co">        """</span></span>
+<span id="cb1-193"><a href="#cb1-193" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.radial(r) <span class="op">*</span> <span class="va">self</span>.spherical_harmonic(theta, phi)</span>
+<span id="cb1-194"><a href="#cb1-194" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb1-195"><a href="#cb1-195" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> energy(<span class="va">self</span>):</span>
+<span id="cb1-196"><a href="#cb1-196" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""</span></span>
+<span id="cb1-197"><a href="#cb1-197" aria-hidden="true" tabindex="-1"></a><span class="co">        This calcuates the energy in Joules of the electron at the n level of this</span></span>
+<span id="cb1-198"><a href="#cb1-198" aria-hidden="true" tabindex="-1"></a><span class="co">        atoms configuration.</span></span>
+<span id="cb1-199"><a href="#cb1-199" aria-hidden="true" tabindex="-1"></a><span class="co">        </span></span>
+<span id="cb1-200"><a href="#cb1-200" aria-hidden="true" tabindex="-1"></a><span class="co">        It makes the infinite mas approximation for the nucleus, so the mass in</span></span>
+<span id="cb1-201"><a href="#cb1-201" aria-hidden="true" tabindex="-1"></a><span class="co">        the expression is that of the electron.</span></span>
+<span id="cb1-202"><a href="#cb1-202" aria-hidden="true" tabindex="-1"></a><span class="co">        </span></span>
+<span id="cb1-203"><a href="#cb1-203" aria-hidden="true" tabindex="-1"></a><span class="co">        From page 324 of Atkins and de Paula</span></span>
+<span id="cb1-204"><a href="#cb1-204" aria-hidden="true" tabindex="-1"></a><span class="co">        </span></span>
+<span id="cb1-205"><a href="#cb1-205" aria-hidden="true" tabindex="-1"></a><span class="co">        Returns</span></span>
+<span id="cb1-206"><a href="#cb1-206" aria-hidden="true" tabindex="-1"></a><span class="co">        -------</span></span>
+<span id="cb1-207"><a href="#cb1-207" aria-hidden="true" tabindex="-1"></a><span class="co">        float, float</span></span>
+<span id="cb1-208"><a href="#cb1-208" aria-hidden="true" tabindex="-1"></a><span class="co">            First float is energy level in joules, second float is energy level in eV</span></span>
+<span id="cb1-209"><a href="#cb1-209" aria-hidden="true" tabindex="-1"></a><span class="co">        """</span></span>
+<span id="cb1-210"><a href="#cb1-210" aria-hidden="true" tabindex="-1"></a>        ev_per_joule <span class="op">=</span> <span class="fl">6.242e+18</span></span>
+<span id="cb1-211"><a href="#cb1-211" aria-hidden="true" tabindex="-1"></a>        numerator <span class="op">=</span> <span class="va">self</span>.z<span class="op">**</span><span class="dv">2</span> <span class="op">*</span> <span class="va">self</span>.me <span class="op">*</span> <span class="va">self</span>.e_charge<span class="op">**</span><span class="dv">4</span></span>
+<span id="cb1-212"><a href="#cb1-212" aria-hidden="true" tabindex="-1"></a>        denominator <span class="op">=</span> <span class="dv">32</span> <span class="op">*</span> pi<span class="op">**</span><span class="dv">2</span> <span class="op">*</span> <span class="va">self</span>.e0<span class="op">**</span><span class="dv">2</span> <span class="op">*</span> <span class="va">self</span>.hbar<span class="op">**</span><span class="dv">2</span> <span class="op">*</span> <span class="va">self</span>.n<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb1-213"><a href="#cb1-213" aria-hidden="true" tabindex="-1"></a>        value <span class="op">=</span> numerator <span class="op">/</span> denominator</span>
+<span id="cb1-214"><a href="#cb1-214" aria-hidden="true" tabindex="-1"></a>        joules <span class="op">=</span> <span class="op">-</span>value</span>
+<span id="cb1-215"><a href="#cb1-215" aria-hidden="true" tabindex="-1"></a>        ev <span class="op">=</span> joules <span class="op">*</span> ev_per_joule</span>
+<span id="cb1-216"><a href="#cb1-216" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> joules, ev</span>
+<span id="cb1-217"><a href="#cb1-217" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-218"><a href="#cb1-218" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> mean_orbital_radius(<span class="va">self</span>):</span>
+<span id="cb1-219"><a href="#cb1-219" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""</span></span>
+<span id="cb1-220"><a href="#cb1-220" aria-hidden="true" tabindex="-1"></a><span class="co">        Returns the mean orbital radius of the given state of this atom.</span></span>
+<span id="cb1-221"><a href="#cb1-221" aria-hidden="true" tabindex="-1"></a><span class="co">        It does this by integration.</span></span>
+<span id="cb1-222"><a href="#cb1-222" aria-hidden="true" tabindex="-1"></a><span class="co">        </span></span>
+<span id="cb1-223"><a href="#cb1-223" aria-hidden="true" tabindex="-1"></a><span class="co">        Returns</span></span>
+<span id="cb1-224"><a href="#cb1-224" aria-hidden="true" tabindex="-1"></a><span class="co">        -------</span></span>
+<span id="cb1-225"><a href="#cb1-225" aria-hidden="true" tabindex="-1"></a><span class="co">        float</span></span>
+<span id="cb1-226"><a href="#cb1-226" aria-hidden="true" tabindex="-1"></a><span class="co">            The mean orbital radius</span></span>
+<span id="cb1-227"><a href="#cb1-227" aria-hidden="true" tabindex="-1"></a><span class="co">        """</span></span>
+<span id="cb1-228"><a href="#cb1-228" aria-hidden="true" tabindex="-1"></a>        second_point_guess <span class="op">=</span> <span class="dv">10</span> <span class="op">*</span> <span class="va">self</span>.n <span class="op">*</span> <span class="va">self</span>.a0</span>
+<span id="cb1-229"><a href="#cb1-229" aria-hidden="true" tabindex="-1"></a>        <span class="kw">def</span> integrand(r):</span>
+<span id="cb1-230"><a href="#cb1-230" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> r<span class="op">**</span><span class="dv">3</span> <span class="op">*</span> <span class="va">self</span>.radial(r)<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb1-231"><a href="#cb1-231" aria-hidden="true" tabindex="-1"></a>        radius, _ <span class="op">=</span> quad(integrand, <span class="dv">0</span>, <span class="dv">1</span>, points<span class="op">=</span>[<span class="dv">0</span>, second_point_guess])</span>
+<span id="cb1-232"><a href="#cb1-232" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> radius</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="check-the-spherical-harmonics" class="level2">
+<h2 class="anchored" data-anchor-id="check-the-spherical-harmonics">Check the spherical harmonics</h2>
+<p>Make sure all the spherical harmonics are normalized. That means each of the the spherical harmonic functions must stasify the following expression:</p>
+<p><span class="math display">\[ \int_0^{\pi} \int_0^{2\pi} \lvert Y_{l, m_l} \rvert ^2 \sin \theta d \theta d \phi = 1 \]</span></p>
+<p>The next block of code takes the spherical harmonic for each parameter set of l and ml and numerically integrates it to ensure that the result is 1.0, within floating point precision. A report of the parameters and the results follows, and they all integrate to approximately 1.0! Success!</p>
+<div id="2802b116" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>parameters <span class="op">=</span> [</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    { <span class="st">'n'</span>: <span class="dv">3</span>, <span class="st">'l'</span>: <span class="dv">0</span>, <span class="st">'ml'</span>: <span class="dv">0</span> },</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    { <span class="st">'n'</span>: <span class="dv">3</span>, <span class="st">'l'</span>: <span class="dv">1</span>, <span class="st">'ml'</span>: <span class="dv">0</span> },</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    { <span class="st">'n'</span>: <span class="dv">3</span>, <span class="st">'l'</span>: <span class="dv">1</span>, <span class="st">'ml'</span>: <span class="dv">1</span> },</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    { <span class="st">'n'</span>: <span class="dv">3</span>, <span class="st">'l'</span>: <span class="dv">1</span>, <span class="st">'ml'</span>: <span class="op">-</span><span class="dv">1</span> },</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    { <span class="st">'n'</span>: <span class="dv">3</span>, <span class="st">'l'</span>: <span class="dv">2</span>, <span class="st">'ml'</span>: <span class="dv">0</span> },</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    { <span class="st">'n'</span>: <span class="dv">3</span>, <span class="st">'l'</span>: <span class="dv">2</span>, <span class="st">'ml'</span>: <span class="dv">1</span> },</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    { <span class="st">'n'</span>: <span class="dv">3</span>, <span class="st">'l'</span>: <span class="dv">2</span>, <span class="st">'ml'</span>: <span class="op">-</span><span class="dv">1</span> },</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    { <span class="st">'n'</span>: <span class="dv">3</span>, <span class="st">'l'</span>: <span class="dv">2</span>, <span class="st">'ml'</span>: <span class="dv">2</span> },</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    { <span class="st">'n'</span>: <span class="dv">3</span>, <span class="st">'l'</span>: <span class="dv">2</span>, <span class="st">'ml'</span>: <span class="op">-</span><span class="dv">2</span> },</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    { <span class="st">'n'</span>: <span class="dv">3</span>, <span class="st">'l'</span>: <span class="dv">3</span>, <span class="st">'ml'</span>: <span class="dv">0</span> },</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    { <span class="st">'n'</span>: <span class="dv">3</span>, <span class="st">'l'</span>: <span class="dv">3</span>, <span class="st">'ml'</span>: <span class="dv">1</span> },</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    { <span class="st">'n'</span>: <span class="dv">3</span>, <span class="st">'l'</span>: <span class="dv">3</span>, <span class="st">'ml'</span>: <span class="op">-</span><span class="dv">1</span> },</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    { <span class="st">'n'</span>: <span class="dv">3</span>, <span class="st">'l'</span>: <span class="dv">3</span>, <span class="st">'ml'</span>: <span class="dv">2</span> },</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    { <span class="st">'n'</span>: <span class="dv">3</span>, <span class="st">'l'</span>: <span class="dv">3</span>, <span class="st">'ml'</span>: <span class="op">-</span><span class="dv">2</span> },</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    { <span class="st">'n'</span>: <span class="dv">3</span>, <span class="st">'l'</span>: <span class="dv">3</span>, <span class="st">'ml'</span>: <span class="dv">3</span> },</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    { <span class="st">'n'</span>: <span class="dv">3</span>, <span class="st">'l'</span>: <span class="dv">3</span>, <span class="st">'ml'</span>: <span class="op">-</span><span class="dv">3</span> }</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> p <span class="kw">in</span> parameters:</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    ha <span class="op">=</span> HydrogenicAtom(n<span class="op">=</span>p[<span class="st">'n'</span>], l<span class="op">=</span>p[<span class="st">'l'</span>], ml<span class="op">=</span>p[<span class="st">'ml'</span>])</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> integrand(phi,theta):</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>        value <span class="op">=</span> ha.spherical_harmonic(theta, phi)</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="bu">abs</span>(value) <span class="op">**</span> <span class="dv">2</span> <span class="op">*</span> sin(theta).real</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>    p[<span class="st">'result'</span>], _ <span class="op">=</span> dblquad(integrand, <span class="dv">0</span>, pi, <span class="dv">0</span>, <span class="dv">2</span> <span class="op">*</span> pi)</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> p <span class="kw">in</span> parameters:</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(p)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>{'n': 3, 'l': 0, 'ml': 0, 'result': 0.9999999999999999}
+{'n': 3, 'l': 1, 'ml': 0, 'result': 1.0}
+{'n': 3, 'l': 1, 'ml': 1, 'result': 0.9999999999999999}
+{'n': 3, 'l': 1, 'ml': -1, 'result': 0.9999999999999999}
+{'n': 3, 'l': 2, 'ml': 0, 'result': 1.0000000000000002}
+{'n': 3, 'l': 2, 'ml': 1, 'result': 0.9999999999999999}
+{'n': 3, 'l': 2, 'ml': -1, 'result': 0.9999999999999999}
+{'n': 3, 'l': 2, 'ml': 2, 'result': 1.0}
+{'n': 3, 'l': 2, 'ml': -2, 'result': 1.0}
+{'n': 3, 'l': 3, 'ml': 0, 'result': 1.0}
+{'n': 3, 'l': 3, 'ml': 1, 'result': 1.0000000000000004}
+{'n': 3, 'l': 3, 'ml': -1, 'result': 1.0000000000000004}
+{'n': 3, 'l': 3, 'ml': 2, 'result': 0.9999999999999999}
+{'n': 3, 'l': 3, 'ml': -2, 'result': 0.9999999999999999}
+{'n': 3, 'l': 3, 'ml': 3, 'result': 1.0000000000000002}
+{'n': 3, 'l': 3, 'ml': -3, 'result': 1.0000000000000002}</code></pre>
+</div>
+</div>
+</section>
+<section id="plots-of-the-radial-functions" class="level2">
+<h2 class="anchored" data-anchor-id="plots-of-the-radial-functions">Plots of the radial functions</h2>
+<p>Figure 1 has plots of the radial functions for various combinations of n and l. Some of the subplots are blank because there is no corresponding radial function for their position on the chart.</p>
+<div id="23c0e232" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>fig, axs <span class="op">=</span> plt.subplots(nrows<span class="op">=</span><span class="dv">3</span>, ncols<span class="op">=</span><span class="dv">3</span>, figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">15</span>))</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Just so I can access instance variables in an instance to make the dictionary.</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>ha <span class="op">=</span> HydrogenicAtom()</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>yscaler <span class="op">=</span> (ha.z <span class="op">/</span> ha.a0)<span class="op">**</span>(<span class="dv">3</span><span class="op">/</span><span class="dv">2</span>)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>parameters <span class="op">=</span> [</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    {<span class="st">'n'</span>: <span class="dv">1</span>, <span class="st">'l'</span>: <span class="dv">0</span>, <span class="st">'x_scaler'</span>: <span class="dv">5</span>, <span class="st">'yscaler'</span>:  yscaler },</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    {<span class="st">'n'</span>: <span class="dv">2</span>, <span class="st">'l'</span>: <span class="dv">0</span>, <span class="st">'x_scaler'</span>: <span class="dv">15</span>, <span class="st">'yscaler'</span>: yscaler },</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    {<span class="st">'n'</span>: <span class="dv">3</span>, <span class="st">'l'</span>: <span class="dv">0</span>, <span class="st">'x_scaler'</span>: <span class="dv">20</span>, <span class="st">'yscaler'</span>: yscaler },</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    {<span class="st">'n'</span>: <span class="dv">2</span>, <span class="st">'l'</span>: <span class="dv">1</span>, <span class="st">'x_scaler'</span>: <span class="dv">15</span>, <span class="st">'yscaler'</span>: yscaler },</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    {<span class="st">'n'</span>: <span class="dv">3</span>, <span class="st">'l'</span>: <span class="dv">1</span>, <span class="st">'x_scaler'</span>: <span class="dv">30</span>, <span class="st">'yscaler'</span>: yscaler },</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    {<span class="st">'n'</span>: <span class="dv">3</span>, <span class="st">'l'</span>: <span class="dv">2</span>, <span class="st">'x_scaler'</span>: <span class="dv">30</span>, <span class="st">'yscaler'</span>: yscaler }</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> p <span class="kw">in</span> parameters:</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    row <span class="op">=</span> p[<span class="st">'n'</span>] <span class="op">-</span> <span class="dv">1</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    col <span class="op">=</span> p[<span class="st">'l'</span>]</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>    ha <span class="op">=</span> HydrogenicAtom(n<span class="op">=</span>p[<span class="st">'n'</span>], l<span class="op">=</span>p[<span class="st">'l'</span>])</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>    xs <span class="op">=</span> np.linspace(<span class="dv">0</span>, ha.a0 <span class="op">*</span> p[<span class="st">'x_scaler'</span>], <span class="dv">100</span>)</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>    xs_labels <span class="op">=</span> xs <span class="op">/</span> ha.a0  <span class="co"># so that the x axis is labeled in units of a0</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>    ys <span class="op">=</span> [ha.radial(r) <span class="op">/</span> p[<span class="st">'yscaler'</span>] <span class="cf">for</span> r <span class="kw">in</span> xs]</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>    ax <span class="op">=</span> axs[row, col]</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>    ax.set_title(<span class="ss">f'n=</span><span class="sc">{</span>p[<span class="st">"n"</span>]<span class="sc">}</span><span class="ss">, l=</span><span class="sc">{</span>p[<span class="st">"l"</span>]<span class="sc">}</span><span class="ss">'</span>, color<span class="op">=</span><span class="st">'b'</span>)</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>    ax.set_xlim(<span class="bu">min</span>(xs_labels), <span class="bu">max</span>(xs_labels))</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> col <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>        ax.set_ylabel(<span class="st">'r/((Z/a0)**(3/2))'</span>, color<span class="op">=</span><span class="st">'b'</span>)</span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>    ax.set_xlabel(<span class="st">'r/a0'</span>)</span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>    ax.axhline(<span class="fl">0.0</span>, color<span class="op">=</span><span class="st">'r'</span>)</span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>    ax.plot(xs_labels, ys)</span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">0</span>, <span class="dv">1</span>].set_title(<span class="st">'intentionally blank'</span>)</span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">0</span>, <span class="dv">2</span>].set_title(<span class="st">'intentionally blank'</span>)</span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">1</span>, <span class="dv">2</span>].set_title(<span class="st">'intentionally blank'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<pre><code>Text(0.5, 1.0, 'intentionally blank')</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/cell-4-output-2.png" width="983" height="1189" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="hydrogen-energy-levels" class="level2">
+<h2 class="anchored" data-anchor-id="hydrogen-energy-levels">Hydrogen energy levels</h2>
+<p>Note how the levels pack closer together at higher energy levels. The lowest energy, -13.6 eV, is the ground state of the hydrogen atom. All the energies are negative, which means they refer to bound states where the nucleus holds the electron.</p>
+<div id="854d63ce" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>ys <span class="op">=</span> []</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> n <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">10</span>):</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    ha <span class="op">=</span> HydrogenicAtom(n<span class="op">=</span>n)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    _, ev <span class="op">=</span> ha.energy()</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    ys.append((n, <span class="bu">round</span>(ev, <span class="dv">2</span>)))</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(nrows<span class="op">=</span><span class="dv">1</span>, ncols<span class="op">=</span><span class="dv">1</span>, figsize<span class="op">=</span>(<span class="dv">2</span>, <span class="dv">10</span>))</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>ax.set_ylim(<span class="op">-</span><span class="fl">14.0</span>, <span class="fl">0.0</span>)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>ax.set_xticks([])</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'eV'</span>, size<span class="op">=</span><span class="dv">20</span>, color<span class="op">=</span><span class="st">'b'</span>)</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">'Hydrogen Energy Levels, n=1 to n=9'</span>, size<span class="op">=</span><span class="dv">20</span>, color<span class="op">=</span><span class="st">'b'</span>)</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> y <span class="kw">in</span> ys:</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    ax.axhline(y[<span class="dv">1</span>], color<span class="op">=</span><span class="st">'r'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/cell-5-output-1.png" width="517" height="795" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../..\img/2021-07-16-hydrogenic-atoms/output_7_0.png" class="img-fluid figure-img"></p>
+<figcaption>png</figcaption>
+</figure>
+</div>
+</section>
+<section id="by-numeric-integration-what-is-the-mean-radius-of-1s-orbital" class="level2">
+<h2 class="anchored" data-anchor-id="by-numeric-integration-what-is-the-mean-radius-of-1s-orbital">By numeric integration, what is the mean radius of 1s orbital?</h2>
+<p>In this section, I follow the integral given in Example 10.2 that will find the mean radius of an orbital:</p>
+<p><span class="math display">\[ \langle r \rangle = \int_0^{\infty} r^3 R_{n,l}^2 dr \]</span></p>
+<p>I integrate it numerically with the <code>quad</code> function from <code>scipy.integrate</code>. The <code>points</code> argument to <code>quad</code> tells the function the r values that the value ies within. To help the <code>quad</code> numeri integration function out, I took a guess that the mean radius is going to be within \(10 a_0 n\) radii of the nucleus. Also, I took 1 meter as the “infinity” for integration in this case.</p>
+<div id="648efb36" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>ha <span class="op">=</span> HydrogenicAtom(n<span class="op">=</span><span class="dv">1</span>, l<span class="op">=</span><span class="dv">0</span>, ml<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> integrand(r):</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> r<span class="op">**</span><span class="dv">3</span> <span class="op">*</span> ha.radial(r)<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(quad(integrand, <span class="dv">0</span>, <span class="dv">1</span>, points<span class="op">=</span>[<span class="dv">0</span>, <span class="dv">10</span> <span class="op">*</span> ha.a0 <span class="op">*</span> ha.n]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>(7.934974578483517e-11, 3.8150348949908406e-14)</code></pre>
+</div>
+</div>
+<p>The first element of the tuple above is the result of the integration, and the second element is the estimated error of the integration. Below is the solution to the analytical integration solution given by the book. It matches the numeric integration!</p>
+<div id="3d5a1587" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">3</span> <span class="op">*</span> ha.a0 <span class="op">/</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>7.935e-11</code></pre>
+</div>
+</div>
+<p>What about the 3s orbital? First numeric integration, then the numeric solution from the book.</p>
+<div id="442dc943" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>ha <span class="op">=</span> HydrogenicAtom(n<span class="op">=</span><span class="dv">3</span>, l<span class="op">=</span><span class="dv">0</span>, ml<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> integrand(r):</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> r<span class="op">**</span><span class="dv">3</span> <span class="op">*</span> ha.radial(r)<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(quad(integrand, <span class="dv">0</span>, <span class="dv">1</span>, points<span class="op">=</span>[<span class="dv">0</span>, <span class="dv">10</span> <span class="op">*</span> ha.a0 <span class="op">*</span> ha.n]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>(7.118296273936347e-10, 6.083642982150495e-11)</code></pre>
+</div>
+</div>
+<div id="0b8e1a0c" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">27</span> <span class="op">*</span> ha.a0 <span class="op">/</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>7.1415e-10</code></pre>
+</div>
+</div>
+<p>What about the 3p orbital?</p>
+<div id="d0899fac" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>ha <span class="op">=</span> HydrogenicAtom(n<span class="op">=</span><span class="dv">3</span>, l<span class="op">=</span><span class="dv">1</span>, ml<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> integrand(r):</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> r<span class="op">**</span><span class="dv">3</span> <span class="op">*</span> ha.radial(r)<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(quad(integrand, <span class="dv">0</span>, <span class="dv">1</span>, points<span class="op">=</span>[<span class="dv">0</span>, <span class="dv">10</span> <span class="op">*</span> ha.a0 <span class="op">*</span> ha.n]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>(6.598213399404118e-10, 3.765511206963294e-12)</code></pre>
+</div>
+</div>
+<div id="a6683958" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">25</span> <span class="op">*</span> ha.a0 <span class="op">/</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>6.6125e-10</code></pre>
+</div>
+</div>
+<p>Overall, the numerical integration and the guess about where the interesting parts of the integration are worked out fairly well for these examples.</p>
+</section>
+<section id="what-is-the-mean-radius-of-each-orbital" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-the-mean-radius-of-each-orbital">What is the mean radius of each orbital?</h2>
+<p>Make some plots of the mean radius of each orbital. Red circles are s orbitals, green squares are p orbitals, blue diamonds are d orbitals. Note that the radii of d &lt; p &lt; s for each level n.</p>
+<div id="da48e7d3" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>parameters <span class="op">=</span> [</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    {<span class="st">'n'</span>: <span class="dv">1</span>, <span class="st">'l'</span>: <span class="dv">0</span> },</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    {<span class="st">'n'</span>: <span class="dv">2</span>, <span class="st">'l'</span>: <span class="dv">0</span> },</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    {<span class="st">'n'</span>: <span class="dv">2</span>, <span class="st">'l'</span>: <span class="dv">1</span> },</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    {<span class="st">'n'</span>: <span class="dv">3</span>, <span class="st">'l'</span>: <span class="dv">0</span> },</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>    {<span class="st">'n'</span>: <span class="dv">3</span>, <span class="st">'l'</span>: <span class="dv">1</span> },</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>    {<span class="st">'n'</span>: <span class="dv">3</span>, <span class="st">'l'</span>: <span class="dv">2</span> }</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> p <span class="kw">in</span> parameters:</span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>    ha <span class="op">=</span> HydrogenicAtom(n<span class="op">=</span>p[<span class="st">'n'</span>], l<span class="op">=</span>p[<span class="st">'l'</span>])</span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>    p[<span class="st">'mean_radius_a0'</span>] <span class="op">=</span> ha.mean_orbital_radius() <span class="op">/</span> ha.a0</span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(nrows<span class="op">=</span><span class="dv">1</span>, ncols<span class="op">=</span><span class="dv">1</span>, figsize<span class="op">=</span>(<span class="dv">5</span>, <span class="dv">5</span>))</span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> p <span class="kw">in</span> parameters:</span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> p[<span class="st">'n'</span>]</span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> p[<span class="st">'mean_radius_a0'</span>]</span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> p[<span class="st">'l'</span>] <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a>        color <span class="op">=</span> <span class="st">'r'</span></span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a>        marker <span class="op">=</span> <span class="st">'o'</span></span>
+<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a>        label <span class="op">=</span> <span class="st">'s'</span></span>
+<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> p[<span class="st">'l'</span>] <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a>        color <span class="op">=</span> <span class="st">'g'</span></span>
+<span id="cb19-24"><a href="#cb19-24" aria-hidden="true" tabindex="-1"></a>        marker <span class="op">=</span> <span class="st">'s'</span></span>
+<span id="cb19-25"><a href="#cb19-25" aria-hidden="true" tabindex="-1"></a>        label <span class="op">=</span> <span class="st">'p'</span></span>
+<span id="cb19-26"><a href="#cb19-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb19-27"><a href="#cb19-27" aria-hidden="true" tabindex="-1"></a>        color <span class="op">=</span> <span class="st">'b'</span></span>
+<span id="cb19-28"><a href="#cb19-28" aria-hidden="true" tabindex="-1"></a>        marker <span class="op">=</span> <span class="st">'d'</span></span>
+<span id="cb19-29"><a href="#cb19-29" aria-hidden="true" tabindex="-1"></a>        label <span class="op">=</span> <span class="st">'d'</span></span>
+<span id="cb19-30"><a href="#cb19-30" aria-hidden="true" tabindex="-1"></a>    ax.scatter(x, y, marker<span class="op">=</span>marker, color<span class="op">=</span>color, s<span class="op">=</span><span class="dv">200</span>)</span>
+<span id="cb19-31"><a href="#cb19-31" aria-hidden="true" tabindex="-1"></a>ax.set_xticks([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>])</span>
+<span id="cb19-32"><a href="#cb19-32" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'n'</span>)</span>
+<span id="cb19-33"><a href="#cb19-33" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'r / a0'</span>)</span>
+<span id="cb19-34"><a href="#cb19-34" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">'Relative mean orbital radii'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="11">
+<pre><code>Text(0.5, 1.0, 'Relative mean orbital radii')</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/cell-12-output-2.png" width="436" height="449" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

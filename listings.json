@@ -2,6 +2,10 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/multivariate_normal_distribution/index.html",
+      "/posts/metropolis_basic/index.html",
+      "/posts/mm_basic/index.html",
+      "/posts/connected_reversible_linear/index.html",
       "/posts/moldyn/index.html",
       "/posts/positive-and-negative-definite-matrices/index.html",
       "/posts/simple-gradient-descent/index.html",

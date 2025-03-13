@@ -9,7 +9,7 @@
 <meta name="author" content="Alicia">
 <meta name="dcterms.date" content="2024-03-23">
 
-<title>Julia: Molecular Dynamics of HCl – akey7</title>
+<title>Julia: Molecular Dynamics of HCl – Alicia’s Side Projects</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -139,7 +139,7 @@ window.Quarto = {
 <link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-fixed fullcontent">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top quarto-banner">
@@ -147,7 +147,7 @@ window.Quarto = {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
-    <span class="navbar-title">akey7</span>
+    <span class="navbar-title">Alicia’s Side Projects</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -155,13 +155,37 @@ window.Quarto = {
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
     <a class="nav-link" href="../../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../ai.html"> 
+<span class="menu-text">AI &amp; Deep Learning</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog.html"> 
+<span class="menu-text">Blog</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../data-analysis.html"> 
+<span class="menu-text">Data Analysis</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
     <a class="nav-link" href="https://github.com/akey7"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.youtube.com/@aliciascience"> <i class="bi bi-youtube" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/akey7/"> <i class="bi bi-linkedin" role="img">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
@@ -209,7 +233,38 @@ window.Quarto = {
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#background" id="toc-background" class="nav-link active" data-scroll-target="#background">Background</a>
+  <ul class="collapse">
+  <li><a href="#stretch-potential-energy" id="toc-stretch-potential-energy" class="nav-link" data-scroll-target="#stretch-potential-energy">Stretch Potential Energy</a></li>
+  <li><a href="#analytical-period" id="toc-analytical-period" class="nav-link" data-scroll-target="#analytical-period">Analytical Period</a></li>
+  <li><a href="#velocity-verlet" id="toc-velocity-verlet" class="nav-link" data-scroll-target="#velocity-verlet">Velocity Verlet</a></li>
+  <li><a href="#kinetic-potential-and-total-energy" id="toc-kinetic-potential-and-total-energy" class="nav-link" data-scroll-target="#kinetic-potential-and-total-energy">Kinetic, Potential, and Total Energy</a></li>
+  </ul></li>
+  <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods">Methods</a>
+  <ul class="collapse">
+  <li><a href="#h35cl-properties" id="toc-h35cl-properties" class="nav-link" data-scroll-target="#h35cl-properties"><sup>1</sup>H<sup>35</sup>Cl Properties</a></li>
+  <li><a href="#define-constants" id="toc-define-constants" class="nav-link" data-scroll-target="#define-constants">Define Constants</a></li>
+  <li><a href="#vectors-and-matrices-holding-simulation-information." id="toc-vectors-and-matrices-holding-simulation-information." class="nav-link" data-scroll-target="#vectors-and-matrices-holding-simulation-information.">Vectors and matrices holding simulation information.</a></li>
+  <li><a href="#initialize-simulation" id="toc-initialize-simulation" class="nav-link" data-scroll-target="#initialize-simulation">Initialize Simulation</a></li>
+  <li><a href="#functions-to-run-the-simulation" id="toc-functions-to-run-the-simulation" class="nav-link" data-scroll-target="#functions-to-run-the-simulation">Functions to Run the Simulation</a></li>
+  <li><a href="#velocity-verlet-1" id="toc-velocity-verlet-1" class="nav-link" data-scroll-target="#velocity-verlet-1">Velocity Verlet</a></li>
+  </ul></li>
+  <li><a href="#calculate-analytical-period" id="toc-calculate-analytical-period" class="nav-link" data-scroll-target="#calculate-analytical-period">Calculate Analytical Period</a></li>
+  <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a>
+  <ul class="collapse">
+  <li><a href="#x-coordinate-of-hydrogen" id="toc-x-coordinate-of-hydrogen" class="nav-link" data-scroll-target="#x-coordinate-of-hydrogen">X Coordinate of Hydrogen</a></li>
+  <li><a href="#kinetic-potential-and-total-energy-1" id="toc-kinetic-potential-and-total-energy-1" class="nav-link" data-scroll-target="#kinetic-potential-and-total-energy-1">Kinetic, Potential, and Total Energy</a></li>
+  </ul></li>
+  <li><a href="#discussion" id="toc-discussion" class="nav-link" data-scroll-target="#discussion">Discussion</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
 

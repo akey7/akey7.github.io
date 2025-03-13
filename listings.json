@@ -1,11 +1,15 @@
 [
   {
-    "listing": "/index.html",
+    "listing": "/blog.html",
     "items": [
+      "/posts/organicdl/index.html",
       "/posts/multivariate_normal_distribution/index.html",
       "/posts/metropolis_basic/index.html",
       "/posts/mm_basic/index.html",
       "/posts/connected_reversible_linear/index.html",
+      "/posts/cafe-rewards/index.html",
+      "/posts/pizza-place/index.html",
+      "/posts/hospital-visits/index.html",
       "/posts/moldyn/index.html",
       "/posts/positive-and-negative-definite-matrices/index.html",
       "/posts/simple-gradient-descent/index.html",
@@ -18,6 +22,27 @@
       "/posts/particle-in-box/index.html",
       "/posts/solubility-clustering/index.html",
       "/posts/solubility-regression/index.html"
+    ]
+  },
+  {
+    "listing": "/data-analysis.html",
+    "items": [
+      "/posts/cafe-rewards/index.html",
+      "/posts/pizza-place/index.html",
+      "/posts/hospital-visits/index.html"
+    ]
+  },
+  {
+    "listing": "/index.html",
+    "items": [
+      "/ai.html",
+      "/data-analysis.html"
+    ]
+  },
+  {
+    "listing": "/ai.html",
+    "items": [
+      "/posts/organicdl/index.html"
     ]
   }
 ]

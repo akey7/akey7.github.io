@@ -9,7 +9,7 @@
 <meta name="author" content="Alicia Key">
 <meta name="dcterms.date" content="2021-04-25">
 
-<title>R: Solubility Clustering – akey7</title>
+<title>R: Solubility Clustering – Alicia’s Side Projects</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -107,7 +107,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-fixed fullcontent">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top quarto-banner">
@@ -115,7 +115,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
-    <span class="navbar-title">akey7</span>
+    <span class="navbar-title">Alicia’s Side Projects</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -123,13 +123,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
     <a class="nav-link" href="../../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../ai.html"> 
+<span class="menu-text">AI &amp; Deep Learning</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog.html"> 
+<span class="menu-text">Blog</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../data-analysis.html"> 
+<span class="menu-text">Data Analysis</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
     <a class="nav-link" href="https://github.com/akey7"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.youtube.com/@aliciascience"> <i class="bi bi-youtube" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/akey7/"> <i class="bi bi-linkedin" role="img">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
@@ -177,7 +201,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#dataset-description" id="toc-dataset-description" class="nav-link active" data-scroll-target="#dataset-description">Dataset description</a></li>
+  <li><a href="#review-of-prior-figures" id="toc-review-of-prior-figures" class="nav-link" data-scroll-target="#review-of-prior-figures">Review of prior figures</a></li>
+  <li><a href="#solubility-trends-for-each-variable-by-cluster" id="toc-solubility-trends-for-each-variable-by-cluster" class="nav-link" data-scroll-target="#solubility-trends-for-each-variable-by-cluster">Solubility trends for each variable by cluster</a>
+  <ul class="collapse">
+  <li><a href="#solubility-versus-polar-surface-area-psa" id="toc-solubility-versus-polar-surface-area-psa" class="nav-link" data-scroll-target="#solubility-versus-polar-surface-area-psa">Solubility versus polar surface area (PSA)</a></li>
+  </ul></li>
+  <li><a href="#solubility-versus-h-bond-donors-by-cluster" id="toc-solubility-versus-h-bond-donors-by-cluster" class="nav-link" data-scroll-target="#solubility-versus-h-bond-donors-by-cluster">Solubility versus h-bond donors by cluster</a>
+  <ul class="collapse">
+  <li><a href="#solubility-versus-rings-by-cluster" id="toc-solubility-versus-rings-by-cluster" class="nav-link" data-scroll-target="#solubility-versus-rings-by-cluster">Solubility versus rings by cluster</a></li>
+  </ul></li>
+  <li><a href="#solubility-versus-rotatable_bonds-by-cluster" id="toc-solubility-versus-rotatable_bonds-by-cluster" class="nav-link" data-scroll-target="#solubility-versus-rotatable_bonds-by-cluster">Solubility versus rotatable_bonds by cluster</a>
+  <ul class="collapse">
+  <li><a href="#solubility-versus-molecular-weight-by-cluster" id="toc-solubility-versus-molecular-weight-by-cluster" class="nav-link" data-scroll-target="#solubility-versus-molecular-weight-by-cluster">Solubility versus molecular weight by cluster</a></li>
+  <li><a href="#summary-of-optimum-number-of-clusters" id="toc-summary-of-optimum-number-of-clusters" class="nav-link" data-scroll-target="#summary-of-optimum-number-of-clusters">Summary of optimum number of clusters</a></li>
+  </ul></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
 

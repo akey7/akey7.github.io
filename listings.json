@@ -2,6 +2,7 @@
   {
     "listing": "/blog.html",
     "items": [
+      "/posts/strogatz-ch-05/index.html",
       "/posts/organicdl/index.html",
       "/posts/multivariate_normal_distribution/index.html",
       "/posts/metropolis_basic/index.html",

@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Alicia">
-<meta name="dcterms.date" content="2024-07-04">
 
-<title>PowerBI: Hospital Visits – Alicia’s Side Projects</title>
+<title>Math – Alicia’s Side Projects</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -25,23 +23,25 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-0815c480559380816a4d1ea211a47e91.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-c1fac2584b48ed01fb6e278e36375074.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-listing/list.min.js"></script>
+<script src="site_libs/quarto-listing/quarto-listing.js"></script>
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-0815c480559380816a4d1ea211a47e91.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-c1fac2584b48ed01fb6e278e36375074.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -69,9 +69,67 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script>
 
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-listing .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
 
-<link rel="stylesheet" href="../../styles.css">
+    const options = {
+      valueNames: ['listing-title','listing-author','listing-date','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      
+      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles.css">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -81,7 +139,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../../index.html">
+    <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Alicia’s Side Projects</span>
     </a>
   </div>
@@ -92,23 +150,23 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../about.html"> 
+    <a class="nav-link" href="./about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../ai.html"> 
+    <a class="nav-link" href="./ai.html"> 
 <span class="menu-text">AI &amp; Deep Learning</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../blog.html"> 
+    <a class="nav-link" href="./blog.html"> 
 <span class="menu-text">Blog</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../math.html"> 
+    <a class="nav-link active" href="./math.html" aria-current="page"> 
 <span class="menu-text">Math</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../physics_and_chemistry.html"> 
+    <a class="nav-link" href="./physics_and_chemistry.html"> 
 <span class="menu-text">Physics &amp; Chemistry</span></a>
   </li>  
 </ul>
@@ -138,116 +196,202 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-body">
-      <h1 class="title">PowerBI: Hospital Visits</h1>
-                                <div class="quarto-categories">
-                <div class="quarto-category">analysis</div>
-                <div class="quarto-category">powerbi</div>
-              </div>
-                  </div>
+    <div class="quarto-title column-page">
+      <h1 class="title">Math</h1>
+                      </div>
   </div>
     
   
-  <div class="quarto-title-meta">
+  <div class="quarto-title-meta column-page">
 
-      <div>
-      <div class="quarto-title-meta-heading">Author</div>
-      <div class="quarto-title-meta-contents">
-               <p>Alicia </p>
-            </div>
-    </div>
       
-      <div>
-      <div class="quarto-title-meta-heading">Published</div>
-      <div class="quarto-title-meta-contents">
-        <p class="date">July 4, 2024</p>
-      </div>
-    </div>
     
       
     </div>
     
   
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#suggested-analysis" id="toc-suggested-analysis" class="nav-link active" data-scroll-target="#suggested-analysis">Suggested Analysis</a></li>
-  <li><a href="#power-bi-dashboards" id="toc-power-bi-dashboards" class="nav-link" data-scroll-target="#power-bi-dashboards">Power BI dashboards</a>
-  <ul class="collapse">
-  <li><a href="#dashboard-1" id="toc-dashboard-1" class="nav-link" data-scroll-target="#dashboard-1">Dashboard 1</a></li>
-  <li><a href="#dashboard-2" id="toc-dashboard-2" class="nav-link" data-scroll-target="#dashboard-2">Dashboard 2</a></li>
-  </ul></li>
-  <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a></li>
-  <li><a href="#citation" id="toc-citation" class="nav-link" data-scroll-target="#citation">Citation</a></li>
-  <li><a href="#tools-used" id="toc-tools-used" class="nav-link" data-scroll-target="#tools-used">Tools Used</a></li>
-  </ul>
-</nav>
-    </div>
+    
 <!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content">
+<main class="content quarto-banner-title-block column-page" id="quarto-document-content">
 
 
 
 
 
-<section id="suggested-analysis" class="level2">
-<h2 class="anchored" data-anchor-id="suggested-analysis">Suggested Analysis</h2>
-<p>You’ve been asked to build a high-level KPI report for the executive team, based on a subset of patient records. The purpose of the report is to give stakeholders visibility into the hospital’s recent performance, and answer the following questions:</p>
-<ul>
-<li>How many patients have been admitted or readmitted over time?</li>
-<li>How long are patients staying in the hospital, on average?</li>
-<li>How much is the average cost per visit?</li>
-<li>How many procedures are covered by insurance?</li>
-</ul>
-</section>
-<section id="power-bi-dashboards" class="level2">
-<h2 class="anchored" data-anchor-id="power-bi-dashboards">Power BI dashboards</h2>
-<section id="dashboard-1" class="level3">
-<h3 class="anchored" data-anchor-id="dashboard-1">Dashboard 1</h3>
-<p><img src="hospital_visits_01.png" class="img-fluid"></p>
-</section>
-<section id="dashboard-2" class="level3">
-<h3 class="anchored" data-anchor-id="dashboard-2">Dashboard 2</h3>
-<p><img src="hospital_visits_02.png" class="img-fluid"></p>
-</section>
-</section>
-<section id="results" class="level2">
-<h2 class="anchored" data-anchor-id="results">Results</h2>
-<ul>
-<li>This is an analysis of a synthetic data set created to simulate a hospital in Massachusetts.</li>
-<li>Over the span of years from Jan 2011 to Jan 2022, there were 27,900 encounters, 974 distinct patients, the average claim was $3,640, encounters averaged approximately 7 hours 18 minutes, and 68% of encounters were insured.</li>
-<li>While ambulatory encounters were most common and drove hourly encounter trends, inpatient encounters took the most time on average.</li>
-<li>The average encounter time of 7 hours 18 minutes was increased by a spike of encounters in February 2014, a year with encounters longer than average.</li>
-<li>Medicare, Medicaid, Humana, and Aetna were the top four insurance carriers, accounting for 63% of encounters.</li>
-<li>37% of encounters, however, were uninsured.</li>
-<li>Other insurance carriers accounted for the other 10% of encounters.</li>
-<li>The top procedures were assessments of health and social needs, substance use, depression screening, and renal dialysis.</li>
-<li>70% of patients were white, 17% were Black, 9% Asian, with the balance being other races.</li>
-<li>The hospital served patients from around the Boston Metropolitan Area.</li>
-</ul>
-</section>
-<section id="citation" class="level2">
-<h2 class="anchored" data-anchor-id="citation">Citation</h2>
-<ul>
-<li><p>Jason Walonoski, Mark Kramer, Joseph Nichols, Andre Quina, Chris Moesel, Dylan Hall, Carlton Duffett, Kudakwashe Dube, Thomas Gallagher, Scott McLachlan, Synthea: An approach, method, and software mechanism for generating synthetic patients and the synthetic electronic health care record, Journal of the American Medical Informatics Association, Volume 25, Issue 3, March 2018, Pages 230–238, <a href="https://doi.org/10.1093/jamia/ocx079">https://doi.org/10.1093/jamia/ocx079</a></p></li>
-<li><p><a href="https://app.mavenanalytics.io/datasets">Curated by Maven Analytics</a></p></li>
-</ul>
-</section>
-<section id="tools-used" class="level2">
-<h2 class="anchored" data-anchor-id="tools-used">Tools Used</h2>
-<ul>
-<li>Power BI</li>
-</ul>
 
 
-</section>
 
-</main> <!-- /main -->
+
+<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
+<div class="list grid quarto-listing-cols-3">
+<div class="g-col-1" data-index="0" data-categories="anVsaWElMkNtYXRo" data-listing-date-sort="1746597600000" data-listing-file-modified-sort="1746656986671" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="22" data-listing-word-count-sort="4215">
+<a href="./posts/strogatz-ch-06/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="./posts/strogatz-ch-06/thumbnail.png" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Julia: Strogatz Chapter 06 Examples
+</h5>
+<div class="card-text listing-description delink">
+The following Julia packages will be needed for this document:
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+Alicia
+</div>
+<div class="listing-date">
+May 7, 2025
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="1" data-categories="anVsaWElMkNtYXRo" data-listing-date-sort="1745647200000" data-listing-file-modified-sort="1746656986671" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="22" data-listing-word-count-sort="4217">
+<a href="./posts/strogatz-ch-05/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="./posts/strogatz-ch-05/thumbnail.png" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Julia: Strogatz Ch. 05 Examples
+</h5>
+<div class="card-text listing-description delink">
+Chapter 5 in Strogatz, 3rd edition has many great phase portraits! In this post, I seek to make similar phase portraits in Julia to enhance my understanding of the material.
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+Alicia
+</div>
+<div class="listing-date">
+Apr 26, 2025
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="2" data-categories="anVsaWElMkNtYXRo" data-listing-date-sort="1728108000000" data-listing-file-modified-sort="1741372868157" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="158">
+<a href="./posts/multivariate_normal_distribution/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top"><img src="posts/multivariate_normal_distribution/index_files/figure-html/plot-contour-output-2.svg" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Julia: Multivariate Normal Distribution
+</h5>
+<div class="card-text listing-description delink">
+Plot of multivariate normal distribution.
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+Alicia
+</div>
+<div class="listing-date">
+Oct 5, 2024
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="3" data-categories="anVsaWElMkNtYXRo" data-listing-date-sort="1728021600000" data-listing-file-modified-sort="1741819983140" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="320">
+<a href="./posts/metropolis_basic/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="./posts/metropolis_basic/draws.png" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Julia: Metropolis Algorithm
+</h5>
+<div class="card-text listing-description delink">
+Draw random samples from a distribution with the classic Metropolis algorithm.
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+Alicia
+</div>
+<div class="listing-date">
+Oct 4, 2024
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="4" data-categories="anVsaWElMkNtYXRo" data-listing-date-sort="1710828000000" data-listing-file-modified-sort="1741820468827" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="230">
+<a href="./posts/positive-and-negative-definite-matrices/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="./posts/positive-and-negative-definite-matrices/negative_definite.png" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Julia: Positive and Negative Definite Matrices
+</h5>
+<div class="card-text listing-description delink">
+These functions implement the expression, which can calculate scalar quantities when given <code>x1</code> and <code>x2</code> components of a 2-element vector.
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+Alicia
+</div>
+<div class="listing-date">
+Mar 19, 2024
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="5" data-categories="cHl0aG9uJTJDbWF0aA==" data-listing-date-sort="1686722400000" data-listing-file-modified-sort="1741820482557" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2020">
+<a href="./posts/simple-gradient-descent/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top"><img src="posts/simple-gradient-descent/index_files/figure-html/plot-target-and-initial-estimate-output-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Python: Simple Gradient Descent
+</h5>
+<div class="card-text listing-description delink">
+This is a simple polynomial gradient descent. It is a naive implmentation that is not optimized or vectorized. It is meant to be a simple demo on how gradient descent can be…
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+Alicia
+</div>
+<div class="listing-date">
+Jun 14, 2023
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="6" data-categories="ciUyQ21hdGg=" data-listing-date-sort="1672470000000" data-listing-file-modified-sort="1741820393775" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="13" data-listing-word-count-sort="2496">
+<a href="./posts/fftpipe/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top"><img src="posts/fftpipe/index_files/figure-html/unnamed-chunk-3-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+R: FFT with fftpipe
+</h5>
+<div class="card-text listing-description delink">
+<code>fftpipe</code> is a package of functions that wrap around the base R <code>fft()</code> function. The <code>fftpipe</code> package enables workflows around the <code>fft()</code> function that use the pipe (<code>%&gt;%</code>)…<code></code>
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+Alicia
+</div>
+<div class="listing-date">
+Dec 31, 2022
+</div>
+</div>
+</div>
+</div></a>
+</div>
+</div>
+<div class="listing-no-matching d-none">No matching items</div>
+</div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";

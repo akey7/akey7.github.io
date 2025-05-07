@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Alicia">
-<meta name="dcterms.date" content="2024-07-04">
 
-<title>PowerBI: Hospital Visits – Alicia’s Side Projects</title>
+<title>Physics &amp; Chemistry – Alicia’s Side Projects</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -25,23 +23,25 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-0815c480559380816a4d1ea211a47e91.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-c1fac2584b48ed01fb6e278e36375074.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-listing/list.min.js"></script>
+<script src="site_libs/quarto-listing/quarto-listing.js"></script>
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-0815c480559380816a4d1ea211a47e91.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-c1fac2584b48ed01fb6e278e36375074.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -69,9 +69,67 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script>
 
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-listing .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
 
-<link rel="stylesheet" href="../../styles.css">
+    const options = {
+      valueNames: ['listing-title','listing-author','listing-date','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      
+      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles.css">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -81,7 +139,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../../index.html">
+    <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Alicia’s Side Projects</span>
     </a>
   </div>
@@ -92,23 +150,23 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../about.html"> 
+    <a class="nav-link" href="./about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../ai.html"> 
+    <a class="nav-link" href="./ai.html"> 
 <span class="menu-text">AI &amp; Deep Learning</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../blog.html"> 
+    <a class="nav-link" href="./blog.html"> 
 <span class="menu-text">Blog</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../math.html"> 
+    <a class="nav-link" href="./math.html"> 
 <span class="menu-text">Math</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../physics_and_chemistry.html"> 
+    <a class="nav-link active" href="./physics_and_chemistry.html" aria-current="page"> 
 <span class="menu-text">Physics &amp; Chemistry</span></a>
   </li>  
 </ul>
@@ -138,116 +196,312 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-body">
-      <h1 class="title">PowerBI: Hospital Visits</h1>
-                                <div class="quarto-categories">
-                <div class="quarto-category">analysis</div>
-                <div class="quarto-category">powerbi</div>
-              </div>
-                  </div>
+    <div class="quarto-title column-page">
+      <h1 class="title">Physics &amp; Chemistry</h1>
+                      </div>
   </div>
     
   
-  <div class="quarto-title-meta">
+  <div class="quarto-title-meta column-page">
 
-      <div>
-      <div class="quarto-title-meta-heading">Author</div>
-      <div class="quarto-title-meta-contents">
-               <p>Alicia </p>
-            </div>
-    </div>
       
-      <div>
-      <div class="quarto-title-meta-heading">Published</div>
-      <div class="quarto-title-meta-contents">
-        <p class="date">July 4, 2024</p>
-      </div>
-    </div>
     
       
     </div>
     
   
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#suggested-analysis" id="toc-suggested-analysis" class="nav-link active" data-scroll-target="#suggested-analysis">Suggested Analysis</a></li>
-  <li><a href="#power-bi-dashboards" id="toc-power-bi-dashboards" class="nav-link" data-scroll-target="#power-bi-dashboards">Power BI dashboards</a>
-  <ul class="collapse">
-  <li><a href="#dashboard-1" id="toc-dashboard-1" class="nav-link" data-scroll-target="#dashboard-1">Dashboard 1</a></li>
-  <li><a href="#dashboard-2" id="toc-dashboard-2" class="nav-link" data-scroll-target="#dashboard-2">Dashboard 2</a></li>
-  </ul></li>
-  <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a></li>
-  <li><a href="#citation" id="toc-citation" class="nav-link" data-scroll-target="#citation">Citation</a></li>
-  <li><a href="#tools-used" id="toc-tools-used" class="nav-link" data-scroll-target="#tools-used">Tools Used</a></li>
-  </ul>
-</nav>
-    </div>
+    
 <!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content">
+<main class="content quarto-banner-title-block column-page" id="quarto-document-content">
 
 
 
 
 
-<section id="suggested-analysis" class="level2">
-<h2 class="anchored" data-anchor-id="suggested-analysis">Suggested Analysis</h2>
-<p>You’ve been asked to build a high-level KPI report for the executive team, based on a subset of patient records. The purpose of the report is to give stakeholders visibility into the hospital’s recent performance, and answer the following questions:</p>
-<ul>
-<li>How many patients have been admitted or readmitted over time?</li>
-<li>How long are patients staying in the hospital, on average?</li>
-<li>How much is the average cost per visit?</li>
-<li>How many procedures are covered by insurance?</li>
-</ul>
-</section>
-<section id="power-bi-dashboards" class="level2">
-<h2 class="anchored" data-anchor-id="power-bi-dashboards">Power BI dashboards</h2>
-<section id="dashboard-1" class="level3">
-<h3 class="anchored" data-anchor-id="dashboard-1">Dashboard 1</h3>
-<p><img src="hospital_visits_01.png" class="img-fluid"></p>
-</section>
-<section id="dashboard-2" class="level3">
-<h3 class="anchored" data-anchor-id="dashboard-2">Dashboard 2</h3>
-<p><img src="hospital_visits_02.png" class="img-fluid"></p>
-</section>
-</section>
-<section id="results" class="level2">
-<h2 class="anchored" data-anchor-id="results">Results</h2>
-<ul>
-<li>This is an analysis of a synthetic data set created to simulate a hospital in Massachusetts.</li>
-<li>Over the span of years from Jan 2011 to Jan 2022, there were 27,900 encounters, 974 distinct patients, the average claim was $3,640, encounters averaged approximately 7 hours 18 minutes, and 68% of encounters were insured.</li>
-<li>While ambulatory encounters were most common and drove hourly encounter trends, inpatient encounters took the most time on average.</li>
-<li>The average encounter time of 7 hours 18 minutes was increased by a spike of encounters in February 2014, a year with encounters longer than average.</li>
-<li>Medicare, Medicaid, Humana, and Aetna were the top four insurance carriers, accounting for 63% of encounters.</li>
-<li>37% of encounters, however, were uninsured.</li>
-<li>Other insurance carriers accounted for the other 10% of encounters.</li>
-<li>The top procedures were assessments of health and social needs, substance use, depression screening, and renal dialysis.</li>
-<li>70% of patients were white, 17% were Black, 9% Asian, with the balance being other races.</li>
-<li>The hospital served patients from around the Boston Metropolitan Area.</li>
-</ul>
-</section>
-<section id="citation" class="level2">
-<h2 class="anchored" data-anchor-id="citation">Citation</h2>
-<ul>
-<li><p>Jason Walonoski, Mark Kramer, Joseph Nichols, Andre Quina, Chris Moesel, Dylan Hall, Carlton Duffett, Kudakwashe Dube, Thomas Gallagher, Scott McLachlan, Synthea: An approach, method, and software mechanism for generating synthetic patients and the synthetic electronic health care record, Journal of the American Medical Informatics Association, Volume 25, Issue 3, March 2018, Pages 230–238, <a href="https://doi.org/10.1093/jamia/ocx079">https://doi.org/10.1093/jamia/ocx079</a></p></li>
-<li><p><a href="https://app.mavenanalytics.io/datasets">Curated by Maven Analytics</a></p></li>
-</ul>
-</section>
-<section id="tools-used" class="level2">
-<h2 class="anchored" data-anchor-id="tools-used">Tools Used</h2>
-<ul>
-<li>Power BI</li>
-</ul>
 
 
-</section>
 
-</main> <!-- /main -->
+
+<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
+<div class="list grid quarto-listing-cols-3">
+<div class="g-col-1" data-index="0" data-categories="cHl0b3JjaCUyQ3B5dGhvbiUyQ2NoZW1pc3RyeQ==" data-listing-date-sort="1741759200000" data-listing-file-modified-sort="1741874264026" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="15" data-listing-word-count-sort="2917">
+<a href="./posts/organicdl/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="./posts/organicdl/flask_with_red_liquid.jpg" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+PyTorch: Deep Learning Organic Chemistry
+</h5>
+<div class="card-text listing-description delink">
+Convolutional neural networks (CNNs) are a deep learning technology to use for classifying images. For this demonstration I used images from an introductory organic…
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+Alicia
+</div>
+<div class="listing-date">
+Mar 12, 2025
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="1" data-categories="anVsaWElMkNjaGVtaXN0cnk=" data-listing-date-sort="1727935200000" data-listing-file-modified-sort="1741372817471" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="226">
+<a href="./posts/mm_basic/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="./posts/mm_basic/mm_curve.png" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Julia: Michaelis-Menten Kinetics
+</h5>
+<div class="card-text listing-description delink">
+Basic Michaelis-Menten enzyme kinetics.
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+Alicia
+</div>
+<div class="listing-date">
+Oct 3, 2024
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="2" data-categories="anVsaWElMkNjaGVtaXN0cnk=" data-listing-date-sort="1727589600000" data-listing-file-modified-sort="1741371100580" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="676">
+<a href="./posts/connected_reversible_linear/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="./posts/connected_reversible_linear/trajectory.png" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Julia: Connected Reversible Linear Reaction Network Solver
+</h5>
+<div class="card-text listing-description delink">
+This system is taken from 4.4. Connected Reversible Linear Reactions in [1]. I have rewritten the chemical equation to simplify the notation of the fluxes over the reactions.
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+Alicia
+</div>
+<div class="listing-date">
+Sep 29, 2024
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="3" data-categories="anVsaWElMkNwaHlzaWNzJTJDY2hlbWlzdHJ5" data-listing-date-sort="1711173600000" data-listing-file-modified-sort="1741820443812" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="12" data-listing-word-count-sort="2207">
+<a href="./posts/moldyn/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="./posts/moldyn/total-energy.png" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Julia: Molecular Dynamics of HCl
+</h5>
+<div class="card-text listing-description delink">
+Molecular dynamics models the motion of atoms within molecules using classical mechanics calculations. Molecular dynamics envisions atoms as balls on springs and calculates…<em></em><span class="math display"></span>
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+Alicia
+</div>
+<div class="listing-date">
+Mar 23, 2024
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="4" data-categories="cHl0aG9uJTJDcGh5c2ljcyUyQ2NoZW1pc3RyeQ==" data-listing-date-sort="1662789600000" data-listing-file-modified-sort="1741821962777" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="408">
+<a href="./posts/lennard-jones/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top"><img src="posts/lennard-jones/index_files/figure-html/cell-3-output-2.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Python: Lennard-Jones Potential
+</h5>
+<div class="card-text listing-description delink">
+<span class="math display">\[ V(r) = 4 \epsilon \biggl[ \biggl (\frac{\sigma}{r}\biggr)^{12} -  \biggl (\frac{\sigma}{r}\biggr)^6 \biggr] \]</span>
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+Alicia
+</div>
+<div class="listing-date">
+Sep 10, 2022
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="5" data-categories="cHl0aG9uJTJDcGh5c2ljcyUyQ2NoZW1pc3RyeQ==" data-listing-date-sort="1626415200000" data-listing-file-modified-sort="1741822075936" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="21" data-listing-word-count-sort="4182">
+<a href="./posts/hydrogen-atom/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top"><img src="posts/hydrogen-atom/index_files/figure-html/cell-4-output-2.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Python: Hydrogen Atom
+</h5>
+<div class="card-text listing-description delink">
+In this post, I define a class to model the behavior of a hydrogen atom. In the process, I get to solve integrals like the following numerically to test my code:
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+Alicia
+</div>
+<div class="listing-date">
+Jul 16, 2021
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="6" data-categories="cHl0aG9uJTJDcGh5c2ljcyUyQ2NoZW1pc3RyeQ==" data-listing-date-sort="1626328800000" data-listing-file-modified-sort="1741821973264" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="638">
+<a href="./posts/rydberg-equation-and-hydrogen-spectra/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top"><img src="posts/rydberg-equation-and-hydrogen-spectra/index_files/figure-html/cell-3-output-2.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Python: Rydberg Equation and Hydrogen Spectra
+</h5>
+<div class="card-text listing-description delink">
+The Rydberg formula is used to predict emission spectrum lines from hydrogen. The significance of the Rydberg formula is that it was one of the first studies of quantum…
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+Alicia
+</div>
+<div class="listing-date">
+Jul 15, 2021
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="7" data-categories="cHl0aG9uJTJDcGh5c2ljcyUyQ2NoZW1pc3RyeQ==" data-listing-date-sort="1626156000000" data-listing-file-modified-sort="1741821986195" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="15" data-listing-word-count-sort="2806">
+<a href="./posts/quantum-harmonic-oscillator/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top"><img src="posts/quantum-harmonic-oscillator/index_files/figure-html/cell-3-output-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Python: Quantum harmonic oscillator
+</h5>
+<div class="card-text listing-description delink">
+In this post, I will define Python code that models the quantum harmonic oscillator. This page follows page 290 to 297 in <em>Physical Chemistry, 8th Ed.</em> by Peter Atkins and…
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+Alicia
+</div>
+<div class="listing-date">
+Jul 13, 2021
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="8" data-categories="cHl0aG9uJTJDcGh5c2ljcyUyQ2NoZW1pc3RyeQ==" data-listing-date-sort="1625983200000" data-listing-file-modified-sort="1741821997668" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="13" data-listing-word-count-sort="2553">
+<a href="./posts/two-non-interacting-particles/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top"><img src="posts/two-non-interacting-particles/index_files/figure-html/cell-3-output-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Python: Quantum mechanics: two non-interacting particles
+</h5>
+<div class="card-text listing-description delink">
+This code and these plots explore <em>Molecular Modelling for Beginners, 2nd Ed.</em> by Alan Hinchliffe Section 12.6, pages 181 to 184. In this Section, the author explores the…
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+Alicia
+</div>
+<div class="listing-date">
+Jul 11, 2021
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="9" data-categories="cHl0aG9uJTJDcGh5c2ljcyUyQ2NoZW1pc3RyeQ==" data-listing-date-sort="1625464800000" data-listing-file-modified-sort="1746656986671" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2191">
+<a href="./posts/particle-in-box/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top"><img src="posts/particle-in-box/index_files/figure-html/cell-3-output-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Python: Quantum mechanics: particle in a box
+</h5>
+<div class="card-text listing-description delink">
+This post explores the simplest quatnum mechanical system: the particle in a one-dimensioanl infinite potential well, also known as the one-dimensional particle in a box.
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+Alicia
+</div>
+<div class="listing-date">
+Jul 5, 2021
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="10" data-categories="Y2hlbWlzdHJ5JTJDciUyQ3NvbHViaWxpdHk=" data-listing-date-sort="1619330400000" data-listing-file-modified-sort="1741822010314" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1624">
+<a href="./posts/solubility-clustering/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top"><img src="posts/solubility-clustering/index_files/figure-html/unnamed-chunk-2-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+R: Solubility Clustering
+</h5>
+<div class="card-text listing-description delink">
+In my prior aqueous solubility regression study, I did an exploratory data visualization and found intriguing plots of solubility versus other variables in the study. I…
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+Alicia
+</div>
+<div class="listing-date">
+Apr 25, 2021
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="11" data-categories="Y2hlbWlzdHJ5JTJDciUyQ3NvbHViaWxpdHk=" data-listing-date-sort="1610953200000" data-listing-file-modified-sort="1741822023179" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-word-count-sort="1927">
+<a href="./posts/solubility-regression/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top"><img src="posts/solubility-regression/index_files/figure-html/unnamed-chunk-2-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+R: Solubility Regression with Linear and Random Forest Models
+</h5>
+<div class="card-text listing-description delink">
+Aqueous solubility (ability to dissolve in water) is an essential property of a chemical compound important in the laboratory. Can the solubility of a compound be predicted…
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+Alicia
+</div>
+<div class="listing-date">
+Jan 18, 2021
+</div>
+</div>
+</div>
+</div></a>
+</div>
+</div>
+<div class="listing-no-matching d-none">No matching items</div>
+</div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";

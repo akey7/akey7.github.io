@@ -2,6 +2,7 @@
   {
     "listing": "/blog.html",
     "items": [
+      "/posts/strogatz-ch-06/index.html",
       "/posts/strogatz-ch-05/index.html",
       "/posts/organicdl/index.html",
       "/posts/multivariate_normal_distribution/index.html",
@@ -26,6 +27,12 @@
     ]
   },
   {
+    "listing": "/ai.html",
+    "items": [
+      "/posts/organicdl/index.html"
+    ]
+  },
+  {
     "listing": "/data-analysis.html",
     "items": [
       "/posts/cafe-rewards/index.html",
@@ -37,13 +44,37 @@
     "listing": "/index.html",
     "items": [
       "/ai.html",
-      "/data-analysis.html"
+      "/math.html",
+      "/physics_and_chemistry.html"
     ]
   },
   {
-    "listing": "/ai.html",
+    "listing": "/physics_and_chemistry.html",
     "items": [
-      "/posts/organicdl/index.html"
+      "/posts/organicdl/index.html",
+      "/posts/mm_basic/index.html",
+      "/posts/connected_reversible_linear/index.html",
+      "/posts/moldyn/index.html",
+      "/posts/lennard-jones/index.html",
+      "/posts/hydrogen-atom/index.html",
+      "/posts/rydberg-equation-and-hydrogen-spectra/index.html",
+      "/posts/quantum-harmonic-oscillator/index.html",
+      "/posts/two-non-interacting-particles/index.html",
+      "/posts/particle-in-box/index.html",
+      "/posts/solubility-clustering/index.html",
+      "/posts/solubility-regression/index.html"
+    ]
+  },
+  {
+    "listing": "/math.html",
+    "items": [
+      "/posts/strogatz-ch-06/index.html",
+      "/posts/strogatz-ch-05/index.html",
+      "/posts/multivariate_normal_distribution/index.html",
+      "/posts/metropolis_basic/index.html",
+      "/posts/positive-and-negative-definite-matrices/index.html",
+      "/posts/simple-gradient-descent/index.html",
+      "/posts/fftpipe/index.html"
     ]
   }
 ]

@@ -2,6 +2,7 @@
   {
     "listing": "/blog.html",
     "items": [
+      "/posts/strogatz-ex-7-1-2/index.html",
       "/posts/strogatz-ch-06/index.html",
       "/posts/strogatz-ch-05/index.html",
       "/posts/organicdl/index.html",
@@ -68,6 +69,7 @@
   {
     "listing": "/math.html",
     "items": [
+      "/posts/strogatz-ex-7-1-2/index.html",
       "/posts/strogatz-ch-06/index.html",
       "/posts/strogatz-ch-05/index.html",
       "/posts/multivariate_normal_distribution/index.html",

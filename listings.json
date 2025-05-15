@@ -2,6 +2,7 @@
   {
     "listing": "/blog.html",
     "items": [
+      "/posts/strogatz-fig-8-1-6/index.html",
       "/posts/strogatz-ex-7-1-2/index.html",
       "/posts/strogatz-ch-06/index.html",
       "/posts/strogatz-ch-05/index.html",
@@ -69,6 +70,7 @@
   {
     "listing": "/math.html",
     "items": [
+      "/posts/strogatz-fig-8-1-6/index.html",
       "/posts/strogatz-ex-7-1-2/index.html",
       "/posts/strogatz-ch-06/index.html",
       "/posts/strogatz-ch-05/index.html",

@@ -2,17 +2,23 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.31">
+<meta name="generator" content="quarto-1.10.19">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>Math – Alicia’s Side Projects</title>
 <style>
-code{white-space: pre-wrap;}
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -38,10 +44,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-c1fac2584b48ed01fb6e278e36375074.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-445b8638c3d06994fee0907d791121c4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -100,7 +106,7 @@ ul.task-list li input[type="checkbox"] {
   </script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -113,7 +119,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -227,7 +233,31 @@ window.Quarto = {
 
 <div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
 <div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-categories="anVsaWElMkNtYXRoJTJDY2hlbWlzdHJ5" data-listing-date-sort="1747807200000" data-listing-file-modified-sort="1747876959058" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="20" data-listing-word-count-sort="3880">
+<div class="g-col-1" data-index="0" data-categories="bWF0aCUyQ3BoeXNpY3MlMkNjaGVtaXN0cnk=" data-listing-date-sort="1793253600000" data-listing-file-modified-sort="1793312697496" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="29" data-listing-word-count-sort="5798">
+<a href="./posts/blood-storage-in-silico/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="./posts/blood-storage-in-silico/thumbnail.png" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Blood Storage In Silico
+</h5>
+<div class="card-text listing-description delink">
+<em>This may become a preprint in the future. It is here so potential employers can see it in the meantime.</em>
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+Alicia M. Key, PhD
+</div>
+<div class="listing-date">
+Oct 29, 2026
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="1" data-categories="anVsaWElMkNtYXRoJTJDY2hlbWlzdHJ5" data-listing-date-sort="1747807200000" data-listing-file-modified-sort="1793312697502" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="20" data-listing-word-count-sort="3881">
 <a href="./posts/strogatz-ex-7-3-2/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -242,7 +272,7 @@ Example 7.3.2 is an example system of oscillations in glycolysis. It demonstrate
 </div>
 <div class="card-attribution card-text-small justify">
 <div class="listing-author">
-Alicia
+Alicia M. Key, PhD
 </div>
 <div class="listing-date">
 May 21, 2025
@@ -251,7 +281,7 @@ May 21, 2025
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="1" data-categories="anVsaWElMkNtYXRo" data-listing-date-sort="1747288800000" data-listing-file-modified-sort="1747331913397" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="13" data-listing-word-count-sort="2535">
+<div class="g-col-1" data-index="2" data-categories="anVsaWElMkNtYXRo" data-listing-date-sort="1747288800000" data-listing-file-modified-sort="1793312697503" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="13" data-listing-word-count-sort="2536">
 <a href="./posts/strogatz-fig-8-1-6/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -266,7 +296,7 @@ Figure 8.1.6 of Strogatz is an exmaple of a supercritical pitchfork, wherein a b
 </div>
 <div class="card-attribution card-text-small justify">
 <div class="listing-author">
-Alicia
+Alicia M. Key, PhD
 </div>
 <div class="listing-date">
 May 15, 2025
@@ -275,7 +305,7 @@ May 15, 2025
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="2" data-categories="anVsaWElMkNtYXRo" data-listing-date-sort="1746856800000" data-listing-file-modified-sort="1746923472246" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="19" data-listing-word-count-sort="3698">
+<div class="g-col-1" data-index="3" data-categories="anVsaWElMkNtYXRo" data-listing-date-sort="1746856800000" data-listing-file-modified-sort="1793312697502" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="19" data-listing-word-count-sort="3699">
 <a href="./posts/strogatz-ex-7-1-2/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -290,7 +320,7 @@ This document builds on Strogatz’s Example 7.1.2 of the van der Pol equation.
 </div>
 <div class="card-attribution card-text-small justify">
 <div class="listing-author">
-Alicia
+Alicia M. Key, PhD
 </div>
 <div class="listing-date">
 May 10, 2025
@@ -299,7 +329,7 @@ May 10, 2025
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="3" data-categories="anVsaWElMkNtYXRo" data-listing-date-sort="1746597600000" data-listing-file-modified-sort="1746656986671" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="22" data-listing-word-count-sort="4215">
+<div class="g-col-1" data-index="4" data-categories="anVsaWElMkNtYXRo" data-listing-date-sort="1746597600000" data-listing-file-modified-sort="1793312697502" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="22" data-listing-word-count-sort="4216">
 <a href="./posts/strogatz-ch-06/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -310,11 +340,11 @@ May 10, 2025
 Julia: Strogatz Chapter 06 Examples
 </h5>
 <div class="card-text listing-description delink">
-The following Julia packages will be needed for this document:
+Chapter 06 in Strogatz also has some great phase portraits. In this post, like the Strogatz Chapter 05 post, I reproduce the plots in code to understand them better.
 </div>
 <div class="card-attribution card-text-small justify">
 <div class="listing-author">
-Alicia
+Alicia M. Key, PhD
 </div>
 <div class="listing-date">
 May 7, 2025
@@ -323,7 +353,7 @@ May 7, 2025
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="4" data-categories="anVsaWElMkNtYXRo" data-listing-date-sort="1745647200000" data-listing-file-modified-sort="1746656986671" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="22" data-listing-word-count-sort="4217">
+<div class="g-col-1" data-index="5" data-categories="anVsaWElMkNtYXRo" data-listing-date-sort="1745647200000" data-listing-file-modified-sort="1793312697502" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="22" data-listing-word-count-sort="4217">
 <a href="./posts/strogatz-ch-05/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -338,7 +368,7 @@ Chapter 5 in Strogatz, 3rd edition has many great phase portraits! In this post,
 </div>
 <div class="card-attribution card-text-small justify">
 <div class="listing-author">
-Alicia
+Alicia M. Key, PhD
 </div>
 <div class="listing-date">
 Apr 26, 2025
@@ -347,10 +377,12 @@ Apr 26, 2025
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="5" data-categories="anVsaWElMkNtYXRo" data-listing-date-sort="1728108000000" data-listing-file-modified-sort="1741372868157" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="158">
+<div class="g-col-1" data-index="6" data-categories="anVsaWElMkNtYXRo" data-listing-date-sort="1728108000000" data-listing-file-modified-sort="1793312697500" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="158">
 <a href="./posts/multivariate_normal_distribution/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img src="posts/multivariate_normal_distribution/index_files/figure-html/plot-contour-output-2.svg" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<p class="card-img-top">
+<img loading="lazy" src="./posts/multivariate_normal_distribution/contour.png" class="thumbnail-image card-img" style="height: 150px;">
+</p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
 Julia: Multivariate Normal Distribution
@@ -360,7 +392,7 @@ Plot of multivariate normal distribution.
 </div>
 <div class="card-attribution card-text-small justify">
 <div class="listing-author">
-Alicia
+Alicia M. Key, PhD
 </div>
 <div class="listing-date">
 Oct 5, 2024
@@ -369,7 +401,7 @@ Oct 5, 2024
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="6" data-categories="anVsaWElMkNtYXRo" data-listing-date-sort="1728021600000" data-listing-file-modified-sort="1741819983140" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="320">
+<div class="g-col-1" data-index="7" data-categories="anVsaWElMkNtYXRo" data-listing-date-sort="1728021600000" data-listing-file-modified-sort="1793312697497" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="320">
 <a href="./posts/metropolis_basic/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -384,7 +416,7 @@ Draw random samples from a distribution with the classic Metropolis algorithm.
 </div>
 <div class="card-attribution card-text-small justify">
 <div class="listing-author">
-Alicia
+Alicia M. Key, PhD
 </div>
 <div class="listing-date">
 Oct 4, 2024
@@ -393,7 +425,7 @@ Oct 4, 2024
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="7" data-categories="anVsaWElMkNtYXRo" data-listing-date-sort="1710828000000" data-listing-file-modified-sort="1741820468827" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="230">
+<div class="g-col-1" data-index="8" data-categories="anVsaWElMkNtYXRo" data-listing-date-sort="1710828000000" data-listing-file-modified-sort="1793312697501" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="230">
 <a href="./posts/positive-and-negative-definite-matrices/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -408,7 +440,7 @@ These functions implement the expression, which can calculate scalar quantities 
 </div>
 <div class="card-attribution card-text-small justify">
 <div class="listing-author">
-Alicia
+Alicia M. Key, PhD
 </div>
 <div class="listing-date">
 Mar 19, 2024
@@ -417,10 +449,10 @@ Mar 19, 2024
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="8" data-categories="cHl0aG9uJTJDbWF0aA==" data-listing-date-sort="1686722400000" data-listing-file-modified-sort="1741820482557" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2020">
+<div class="g-col-1" data-index="9" data-categories="cHl0aG9uJTJDbWF0aA==" data-listing-date-sort="1686722400000" data-listing-file-modified-sort="1793312697501" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2020">
 <a href="./posts/simple-gradient-descent/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img src="posts/simple-gradient-descent/index_files/figure-html/plot-target-and-initial-estimate-output-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<p class="card-img-top"><img loading='lazy' src="posts/simple-gradient-descent/index_files/figure-html/plot-target-and-initial-estimate-output-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
 Python: Simple Gradient Descent
@@ -430,7 +462,7 @@ This is a simple polynomial gradient descent. It is a naive implmentation that i
 </div>
 <div class="card-attribution card-text-small justify">
 <div class="listing-author">
-Alicia
+Alicia M. Key, PhD
 </div>
 <div class="listing-date">
 Jun 14, 2023
@@ -439,10 +471,10 @@ Jun 14, 2023
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="9" data-categories="ciUyQ21hdGg=" data-listing-date-sort="1672470000000" data-listing-file-modified-sort="1741820393775" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="13" data-listing-word-count-sort="2496">
+<div class="g-col-1" data-index="10" data-categories="ciUyQ21hdGg=" data-listing-date-sort="1672470000000" data-listing-file-modified-sort="1793312697497" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="13" data-listing-word-count-sort="2496">
 <a href="./posts/fftpipe/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img src="posts/fftpipe/index_files/figure-html/unnamed-chunk-3-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<p class="card-img-top"><img loading='lazy' src="posts/fftpipe/index_files/figure-html/unnamed-chunk-3-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
 R: FFT with fftpipe
@@ -452,7 +484,7 @@ R: FFT with fftpipe
 </div>
 <div class="card-attribution card-text-small justify">
 <div class="listing-author">
-Alicia
+Alicia M. Key, PhD
 </div>
 <div class="listing-date">
 Dec 31, 2022
@@ -515,13 +547,14 @@ Dec 31, 2022
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

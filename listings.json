@@ -2,6 +2,7 @@
   {
     "listing": "/blog.html",
     "items": [
+      "/posts/blood-storage-in-silico/index.html",
       "/posts/strogatz-ex-7-3-2/index.html",
       "/posts/strogatz-fig-8-1-6/index.html",
       "/posts/strogatz-ex-7-1-2/index.html",
@@ -54,6 +55,7 @@
   {
     "listing": "/physics_and_chemistry.html",
     "items": [
+      "/posts/blood-storage-in-silico/index.html",
       "/posts/strogatz-ex-7-3-2/index.html",
       "/posts/organicdl/index.html",
       "/posts/mm_basic/index.html",
@@ -72,6 +74,7 @@
   {
     "listing": "/math.html",
     "items": [
+      "/posts/blood-storage-in-silico/index.html",
       "/posts/strogatz-ex-7-3-2/index.html",
       "/posts/strogatz-fig-8-1-6/index.html",
       "/posts/strogatz-ex-7-1-2/index.html",

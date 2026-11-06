@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Alicia M. Key, PhD">
-<meta name="dcterms.date" content="2026-11-03">
+<meta name="dcterms.date" content="2026-11-06">
 
 <title>Fuzzy System Research – Alicia’s Side Projects</title>
 <style>
@@ -191,7 +191,7 @@ window.Quarto = {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">November 3, 2026</p>
+        <p class="date">November 6, 2026</p>
       </div>
     </div>
     
@@ -217,16 +217,30 @@ window.Quarto = {
   <li><a href="#portfolio-optimization" id="toc-portfolio-optimization" class="nav-link" data-scroll-target="#portfolio-optimization">2. Portfolio Optimization</a>
   <ul class="collapse">
   <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">2.1 Introduction</a></li>
-  <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods">2.2 Methods</a></li>
+  <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods">2.2 Methods</a>
+  <ul class="collapse">
+  <li><a href="#portfolio-return-variance-and-sharpe-ratio" id="toc-portfolio-return-variance-and-sharpe-ratio" class="nav-link" data-scroll-target="#portfolio-return-variance-and-sharpe-ratio">2.2.1 Portfolio Return, Variance, and Sharpe Ratio</a></li>
+  <li><a href="#optimization-maximum-sharpe-ratio" id="toc-optimization-maximum-sharpe-ratio" class="nav-link" data-scroll-target="#optimization-maximum-sharpe-ratio">2.2.2 Optimization: Maximum Sharpe Ratio</a></li>
+  <li><a href="#optimization-minimum-variance" id="toc-optimization-minimum-variance" class="nav-link" data-scroll-target="#optimization-minimum-variance">2.2.3 Optimization: Minimum Variance</a></li>
+  <li><a href="#optimization-maximum-return" id="toc-optimization-maximum-return" class="nav-link" data-scroll-target="#optimization-maximum-return">2.2.4 Optimization: Maximum Return</a></li>
+  <li><a href="#efficient-frontier-calculation" id="toc-efficient-frontier-calculation" class="nav-link" data-scroll-target="#efficient-frontier-calculation">2.2.5 Efficient Frontier Calculation</a></li>
+  <li><a href="#capital-allocation-line-calculation" id="toc-capital-allocation-line-calculation" class="nav-link" data-scroll-target="#capital-allocation-line-calculation">2.2.6 Capital Allocation Line Calculation</a></li>
+  <li><a href="#monte-carlo-portfolios" id="toc-monte-carlo-portfolios" class="nav-link" data-scroll-target="#monte-carlo-portfolios">2.2.7 Monte Carlo Portfolios</a></li>
+  <li><a href="#backtest-methodology" id="toc-backtest-methodology" class="nav-link" data-scroll-target="#backtest-methodology">2.2.8 Backtest Methodology</a></li>
+  </ul></li>
   <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">2.3 Results</a></li>
   <li><a href="#discussion" id="toc-discussion" class="nav-link" data-scroll-target="#discussion">2.4 Discussion</a></li>
   </ul></li>
   <li><a href="#time-series-forecasting" id="toc-time-series-forecasting" class="nav-link" data-scroll-target="#time-series-forecasting">3. Time-Series Forecasting</a>
   <ul class="collapse">
   <li><a href="#introduction-1" id="toc-introduction-1" class="nav-link" data-scroll-target="#introduction-1">3.1 Introduction</a></li>
-  <li><a href="#methods-1" id="toc-methods-1" class="nav-link" data-scroll-target="#methods-1">3.2 Methods</a></li>
-  <li><a href="#results-1" id="toc-results-1" class="nav-link" data-scroll-target="#results-1">3.3 Results</a></li>
-  <li><a href="#discussion-1" id="toc-discussion-1" class="nav-link" data-scroll-target="#discussion-1">3.4 Discussion</a></li>
+  <li><a href="#methods-1" id="toc-methods-1" class="nav-link" data-scroll-target="#methods-1">3.2 Methods</a>
+  <ul class="collapse">
+  <li><a href="#walk-forward-arima-training-and-out-of-sample-forecasting" id="toc-walk-forward-arima-training-and-out-of-sample-forecasting" class="nav-link" data-scroll-target="#walk-forward-arima-training-and-out-of-sample-forecasting">3.2.1 Walk-Forward ARIMA Training and Out-of-Sample Forecasting</a></li>
+  <li><a href="#selecting-arima-order" id="toc-selecting-arima-order" class="nav-link" data-scroll-target="#selecting-arima-order">3.2.2 Selecting ARIMA Order</a></li>
+  <li><a href="#performance-metrics-and-comparison-with-naive-persistence-baseline" id="toc-performance-metrics-and-comparison-with-naive-persistence-baseline" class="nav-link" data-scroll-target="#performance-metrics-and-comparison-with-naive-persistence-baseline">3.2.3 Performance Metrics and Comparison With Naive Persistence Baseline</a></li>
+  </ul></li>
+  <li><a href="#results-and-discussion" id="toc-results-and-discussion" class="nav-link" data-scroll-target="#results-and-discussion">3.3 Results and Discussion</a></li>
   </ul></li>
   <li><a href="#integration-and-future-work" id="toc-integration-and-future-work" class="nav-link" data-scroll-target="#integration-and-future-work">4. Integration and Future Work</a></li>
   </ul>
@@ -239,86 +253,658 @@ window.Quarto = {
 
 
 
-<section id="project-overview" class="level2">
-<h2 class="anchored" data-anchor-id="project-overview">1. Project Overview</h2>
-<p>This project investigates two related quantitative problems: (1) how historical returns can be used to construct portfolios along the mean-variance efficient frontier, and (2) whether short-horizon ARIMA forecasts of individual securities outperform a simple persistence benchmark under walk-forward evaluation.</p>
-<p>In contrast to my other projects focusing on life sciences data and renewable energy, this project aims to showcase a project where (1) I am the sole contributor and (2) since the data source is public and well-known, domain expertise of neither renewable energy nor biology are required to understand what is going on.</p>
-<p>If you want to jump straight to portfolio optimization or ARIMA time series modeling, you can select one of the following links:</p>
+<section id="project-overview" class="level1">
+<h1>1. Project Overview</h1>
+<section id="objectives" class="level2">
+<h2 class="anchored" data-anchor-id="objectives">1.1 Objectives</h2>
+<p>This project investigates two related quantitative modeling problems:</p>
+<ol type="1">
+<li><p><strong>Portfolio optimization:</strong> Can portfolio weights be optimized to maximize the Sharpe ratio, and does the resulting portfolio achieve better out-of-sample backtest performance than a naive equal-weight benchmark?</p></li>
+<li><p><strong>Time-series forecasting:</strong> Can short-horizon ARIMA forecasts of individual securities outperform a naive persistence benchmark under walk-forward evaluation?</p></li>
+</ol>
+<p>In both analyses, model performance is evaluated out of sample against a simple naive benchmark. This provides a common standard for determining whether the additional modeling complexity introduced by optimization or statistical forecasting produces meaningful improvement over a straightforward baseline.</p>
+<p>In contrast to my other published projects, which focus primarily on life sciences and renewable-energy applications, this project uses public, widely understood financial data. It is intended to showcase quantitative modeling in a setting where the methodology and results can be evaluated without specialized domain knowledge in biology or renewable energy. I am the sole contributor to the project, including the quantitative methodology, software development, analysis, testing, and presentation of results.</p>
+<p>To jump directly to either analysis, select one of the following sections:</p>
 <ul>
 <li><a href="#portfolio-optimization">2. Portfolio Optimization</a></li>
 <li><a href="#time-series-forecasting">3. Time-Series Forecasting</a></li>
 </ul>
-<section id="objectives" class="level3">
-<h3 class="anchored" data-anchor-id="objectives">1.1 Objectives</h3>
-<p>The purpose of this project is to provide a portfolio piece showcasing two problems focused on time series data. First and is solving optimization training second is training a machine learning model (ARIMA, auto-regressive integrated moving average) on the time series data. The dataset is publicly available financial market data. Also demonstrated is thourough attention to testing model performance with out-of-sample backtests that avoid temporal leakage (inadvertantly using future data to evaluate past performance).</p>
 </section>
-<section id="system-architecture" class="level3">
-<h3 class="anchored" data-anchor-id="system-architecture">1.2 System Architecture</h3>
-<p>The project is split into 2 repos, one each for the backend and frontend. The sepration of concerns is simple: the backend downloads data, trains models and runs optimizations, and uploads the data to the frontend for display. The frontend simply displays the data calculated by the backend. The code for the backend is more complicated and takes advantage of multicore hardware to accelerate computations. In contrast, the frontend has less code, fewer dependencies, and is made to deploy to low-cost/low-resource hardware. An interface contract defines the files and schemas of data in the S3 bucket transferred from the backend to the frontend.</p>
-<p>In turn, this backend is split into subpackages devoted to downloading market data, running portoflio optimizations, training ARIMA models for forecasting, and uploading daily data to an S3 bucket for the frontend to display.</p>
-<p>System architecture is not the focus of this document. For the technical details, interested readers are referred to the docs for the <a href="https://github.com/akey7/fuzzy-system-research/blob/develop/docs/SYSTEM_DESIGN.md">backend system design of Fuzzy System Research.</a></p>
+<section id="system-architecture" class="level2">
+<h2 class="anchored" data-anchor-id="system-architecture">1.2 System Architecture</h2>
+<p>The system consists of two repositories: a computational backend and a lightweight frontend. The backend retrieves market data, performs portfolio optimization and ARIMA forecasting using multicore processing, and delivers results to an S3 bucket. The frontend retrieves and displays these results, with minimal computational requirements. A defined data interface specifies the files and schemas exchanged between the two components.</p>
+<p>Implementation details are available in the <a href="https://github.com/akey7/fuzzy-system-research/blob/develop/docs/SYSTEM_DESIGN.md">backend system design documentation</a>.</p>
 </section>
-<section id="data-sources" class="level3">
-<h3 class="anchored" data-anchor-id="data-sources">1.3 Data Sources</h3>
+<section id="data-sources" class="level2">
+<h2 class="anchored" data-anchor-id="data-sources">1.3 Data Sources</h2>
 <p>Stock market data is downloaded from the <a href="https://massive.com/">Massive.com</a> API. Risk-free rate 3-month T-Bill data is downloaded from FRED (Federal Reserve Economic Data, maintained by the Federal Reserve Bank of St.&nbsp;Louis), series DTB3.</p>
 </section>
-<section id="reproducibility-and-software-environment" class="level3">
-<h3 class="anchored" data-anchor-id="reproducibility-and-software-environment">1.4 Reproducibility and Software Environment</h3>
+<section id="reproducibility-and-software-environment" class="level2">
+<h2 class="anchored" data-anchor-id="reproducibility-and-software-environment">1.4 Reproducibility and Software Environment</h2>
 <p>Both the backend and frontend are written in Python. On the backend, data that is downloaded is cached for each NYSE trading day, and data that is generated by the backend is saved for each NYSE trading day. On the frontend, the UI presents the prominent opportunity to select results for any day in the uploaded datasets.</p>
 </section>
 </section>
-<section id="portfolio-optimization" class="level2">
-<h2 class="anchored" data-anchor-id="portfolio-optimization">2. Portfolio Optimization</h2>
-<section id="introduction" class="level3">
-<h3 class="anchored" data-anchor-id="introduction">2.1 Introduction</h3>
+<section id="portfolio-optimization" class="level1">
+<h1>2. Portfolio Optimization</h1>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">2.1 Introduction</h2>
+<div id="fig-portfolio-kpis-and-growth" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-portfolio-kpis-and-growth-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig01-portfolio-kpis-and-growth.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-portfolio-kpis-and-growth-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Portfolio optimization backtest KPIs and growth chart as of November 2, 2026.
+</figcaption>
+</figure>
+</div>
+<p>To provide and analysis of a consistent snapshot of the calculations and UI, the <strong>data is as of November 2, 2026</strong>, with the backtest evaluation window being approximately the adjusted closes of the 61 days trading days prior to each out-of-sample evaluation day, and the optimization window being the adjusted closed of the 253 trading days prior to each optimization.</p>
+<p>This project focuses on optimizing for maximum Sharpe ratio. This is compared to a naive baseline that allocates asset weights equally. The performance of each portoflio is evaluated with a 60-day out-of-sample backtest. In the backtest, each portfolio is rebalanced through optimization or equal weighting every 5 days, with the weights of each asset allowed to float between rebalancing. Note that the reblanacing does not account for taxes or other costs associated with rebalancing. At the end of the backtests, results are annualized and reported as KPIs. The backtest results are also used to plot the growth of $1 invested at the begining of the evaluation period. Results are seen in <a href="#fig-portfolio-kpis-and-growth" class="quarto-xref">Figure&nbsp;1</a>.</p>
+<p>The maximum Sharpe ratio portfolio is long-only (no short positions), fully invested (weights sum to 100%), and at most 40.0% in any one ticker. The equal-weight portfolio is long-only (no short positions), fully invested (weights sum to 100%), and equal weights for each ticker.</p>
+<p>The KPIs are extrapolated from the 60-day backtest. CAGR (higher is better), cumulative return (higher is better), maximum drawdown (closer to 0% is better), and annualized volatility (realized) (lower is better.) For the data and backtest as of November 2, 2026, all of these metrics are better for the maximum Sharpe ratio portfolio, though these values can change daily, so if you look on the dashboard at live data, you may seen something different.</p>
+<p>This project also computes portfolio allocations using optimization objectives of maximum return. See more details about these optimization below.</p>
 </section>
-<section id="methods" class="level3">
-<h3 class="anchored" data-anchor-id="methods">2.2 Methods</h3>
-<p><strong>Equation 1.</strong> Expected portfolio return</p>
-<p><span class="math display">\[ E[R_p] = \mathbf{w}^{T}\boldsymbol{\mu} \]</span></p>
-<p><strong>Equation 2.</strong> Portfolio variance</p>
-<p><span class="math display">\[ \sigma_p^2 = \mathbf{w}^{T}\Sigma\mathbf{w} \]</span></p>
+<section id="methods" class="level2">
+<h2 class="anchored" data-anchor-id="methods">2.2 Methods</h2>
+<section id="portfolio-return-variance-and-sharpe-ratio" class="level3">
+<h3 class="anchored" data-anchor-id="portfolio-return-variance-and-sharpe-ratio">2.2.1 Portfolio Return, Variance, and Sharpe Ratio</h3>
+<p>Given vectors of asset weights and mean returns of those assets, the expected value of the portfolio’s return is given by <a href="#eq-portfolio-return" class="quarto-xref">Equation&nbsp;1</a>.</p>
+<p><span id="eq-portfolio-return"><span class="math display">\[ E[R_p] = \mathbf{w}^{T}\boldsymbol{\mu}  \tag{1}\]</span></span></p>
+<p>Where:</p>
 <ul>
-<li>constraints on <strong>w</strong>;</li>
-<li>minimum-variance portfolio;</li>
-<li>maximum-Sharpe portfolio;</li>
-<li>risk-free rate;</li>
-<li>efficient-frontier computation;</li>
-<li>annualization;</li>
-<li>solver/numerical method;</li>
-<li>Monte Carlo simulation.</li>
+<li><span class="math inline">\(E[R_p]\)</span> is the expected value of the portfolio return</li>
+<li><span class="math inline">\(\mathbf{w}\)</span> is the vector of asset weights</li>
+<li><span class="math inline">\(\boldsymbol{\mu}\)</span> is the vector of mean returns over the historical period used for the optimization</li>
 </ul>
-</section>
-<section id="results" class="level3">
-<h3 class="anchored" data-anchor-id="results">2.3 Results</h3>
+<p>Given the vector of asset weights and covariance of those assets, the variance of portfolio returns is given by <a href="#eq-portfolio-variance" class="quarto-xref">Equation&nbsp;2</a>.</p>
+<p><span id="eq-portfolio-variance"><span class="math display">\[ \sigma_p^2 = \mathbf{w}^{T}\Sigma\mathbf{w}  \tag{2}\]</span></span></p>
+<p>Where:</p>
 <ul>
-<li>What does the efficient frontier look like for the current asset universe?</li>
-<li>How different are the max-Sharpe and minimum-variance allocations?</li>
-<li>Where do Monte Carlo portfolios fall relative to the numerical frontier?</li>
+<li><span class="math inline">\(\sigma_p^2\)</span> is the portfolio variance</li>
+<li><span class="math inline">\(\mathbf{w}\)</span> is the vector of asset weights</li>
+<li><span class="math inline">\(\Sigma\)</span> is the covariance matrix of the assets</li>
 </ul>
+<p>Once the variance is calculated, finding the volatility of the returns is easy: Take square root of the variance (the standard deviation) and multipley the standard deviation by 100 to obtain a percentage.</p>
+<p>In addition to mean returns and return variance, another important concept is Sharpe ratio. The intuition is that the Sharpe ratio measures a portfolio’s risk-adjusted return by comparing its expected return above a risk-free benchmark to the volatility of its returns, with higher values indicating more excess return per unit of risk. In this case, the risk free return is that of the 3 month U.S. treasury bill on the date of interest. Higher Sharpe ratios are “better”. See <a href="#eq-sharpe-ratio" class="quarto-xref">Equation&nbsp;3</a> for the calculation.</p>
+<p><span id="eq-sharpe-ratio"><span class="math display">\[
+S_p = \frac{E[R_p] - R_f}{\sigma_p}
+\tag{3}\]</span></span></p>
 </section>
-<section id="discussion" class="level3">
-<h3 class="anchored" data-anchor-id="discussion">2.4 Discussion</h3>
+<section id="optimization-maximum-sharpe-ratio" class="level3">
+<h3 class="anchored" data-anchor-id="optimization-maximum-sharpe-ratio">2.2.2 Optimization: Maximum Sharpe Ratio</h3>
+<p>Let <span class="math inline">\(P_{t,i}\)</span> be the adjusted close of asset <span class="math inline">\(i\)</span> on trading day <span class="math inline">\(t\)</span>. Over a training window of <span class="math inline">\(T\)</span> daily simple returns, expressed in percent,</p>
+<p><span id="eq-returns"><span class="math display">\[
+r_{t,i} = 100 \left( \frac{P_{t,i}}{P_{t-1,i}} - 1 \right), \qquad t = 1, \dots, T,
+\tag{4}\]</span></span></p>
+<p>the mean daily return vector <span class="math inline">\(\boldsymbol{\mu}\)</span> and the covariance matrix <span class="math inline">\(\boldsymbol{\Sigma}\)</span> are the sample estimates</p>
+<p><span id="eq-estimates"><span class="math display">\[
+\mu_i = \frac{1}{T} \sum_{t=1}^{T} r_{t,i},
+\qquad
+\Sigma_{ij} = \frac{1}{T-1} \sum_{t=1}^{T} \left( r_{t,i} - \mu_i \right) \left( r_{t,j} - \mu_j \right).
+\tag{5}\]</span></span></p>
+<p>The daily risk-free rate is <span class="math inline">\(r_f = r_{f,\text{ann}} / 252\)</span>, where <span class="math inline">\(r_{f,\text{ann}}\)</span> is the 3-month U.S. Treasury bill rate (FRED series DTB3), annualized and in percent, from the last published observation before the optimization date.</p>
+<p>The maximum Sharpe ratio (tangency) portfolio solves</p>
+<p><span id="eq-maxsharpe-problem"><span class="math display">\[
+\max_{\mathbf{w} \in \mathbb{R}^n} \;
+S(\mathbf{w}) = \frac{\mathbf{w}^\top \boldsymbol{\mu} - r_f}{\sqrt{\mathbf{w}^\top \boldsymbol{\Sigma}\, \mathbf{w}}}
+\quad \text{subject to} \quad
+\sum_{i=1}^{n} w_i = 1, \qquad 0 \le w_i \le c \quad (i = 1, \dots, n),
+\tag{6}\]</span></span></p>
+<p>with the same weight cap <span class="math inline">\(c\)</span> as in <a href="#eq-maxret-problem" class="quarto-xref">Equation&nbsp;11</a>. The objective is the daily Sharpe ratio. The annualized Sharpe ratio reported with the results is</p>
+<p><span id="eq-sharpe-annualized"><span class="math display">\[
+S_{\text{ann}}(\mathbf{w}) = \sqrt{252}\; S(\mathbf{w})
+= \frac{252\, \mathbf{w}^\top \boldsymbol{\mu} - r_{f,\text{ann}}}{\sqrt{252}\, \sqrt{\mathbf{w}^\top \boldsymbol{\Sigma}\, \mathbf{w}}},
+\tag{7}\]</span></span></p>
+<p>a positive multiple of <span class="math inline">\(S\)</span>, so both have the same maximizer <span class="math inline">\(\mathbf{w}^{*}\)</span>.</p>
+<p>Unlike <a href="#eq-maxret-problem" class="quarto-xref">Equation&nbsp;11</a>, <a href="#eq-maxsharpe-problem" class="quarto-xref">Equation&nbsp;6</a> has no closed-form solution under the bounds, and its objective is not concave. It is solved numerically with sequential least squares programming (SLSQP, <code>scipy.optimize.minimize</code>), minimizing <span class="math inline">\(-S(\mathbf{w})\)</span> from the equal-weight starting point <span class="math inline">\(w_i = 1/n\)</span>, with finite-difference gradients. SLSQP guarantees only a local optimum. However, on the region where <span class="math inline">\(\mathbf{w}^\top \boldsymbol{\mu} &gt; r_f\)</span>, <span class="math inline">\(S\)</span> is the ratio of an affine function to a positive convex function, so it is quasi-concave there. Over the convex feasible set, a local maximum with <span class="math inline">\(S &gt; 0\)</span> is therefore also a global maximum.</p>
+</section>
+<section id="optimization-minimum-variance" class="level3">
+<h3 class="anchored" data-anchor-id="optimization-minimum-variance">2.2.3 Optimization: Minimum Variance</h3>
+<p>The minimum variance portfolio solves</p>
+<p><span id="eq-minvar-problem"><span class="math display">\[
+\min_{\mathbf{w} \in \mathbb{R}^n} \; \mathbf{w}^\top \boldsymbol{\Sigma}\, \mathbf{w}
+\quad \text{subject to} \quad
+\sum_{i=1}^{n} w_i = 1, \qquad 0 \le w_i \le c \quad (i = 1, \dots, n),
+\tag{8}\]</span></span></p>
+<p>with the covariance matrix <span class="math inline">\(\boldsymbol{\Sigma}\)</span> of <a href="#eq-estimates" class="quarto-xref">Equation&nbsp;5</a> and the same weight cap <span class="math inline">\(c\)</span> as in <a href="#eq-maxret-problem" class="quarto-xref">Equation&nbsp;11</a>. Unlike <a href="#eq-maxsharpe-problem" class="quarto-xref">Equation&nbsp;6</a>, it depends only on <span class="math inline">\(\boldsymbol{\Sigma}\)</span>, not on the expected returns <span class="math inline">\(\boldsymbol{\mu}\)</span> or the risk-free rate.</p>
+<p>Without the bounds, the solution would have the closed form</p>
+<p><span id="eq-minvar-unconstrained"><span class="math display">\[
+\mathbf{w}_{\text{GMV}} = \frac{\boldsymbol{\Sigma}^{-1} \mathbf{1}}{\mathbf{1}^\top \boldsymbol{\Sigma}^{-1} \mathbf{1}},
+\tag{9}\]</span></span></p>
+<p>but this can contain negative weights or weights above <span class="math inline">\(c\)</span>. When any bound binds, <a href="#eq-minvar-problem" class="quarto-xref">Equation&nbsp;8</a> has no closed form. It is a convex quadratic program, and strictly convex when <span class="math inline">\(\boldsymbol{\Sigma}\)</span> is positive definite, so it has a unique global minimum <span class="math inline">\(\mathbf{w}^{*}\)</span>. It is solved numerically with SLSQP (<code>scipy.optimize.minimize</code>), from the equal-weight starting point <span class="math inline">\(w_i = 1/n\)</span>, with finite-difference gradients.</p>
+<p>The annualized (arithmetic) expected return and annualized volatility of the solution, in percent, are</p>
+<p><span id="eq-minvar-annualized"><span class="math display">\[
+R_{\text{ann}} = 252\, \mathbf{w}^{*\top} \boldsymbol{\mu},
+\qquad
+\sigma_{\text{ann}} = \sqrt{252}\, \sqrt{\mathbf{w}^{*\top} \boldsymbol{\Sigma}\, \mathbf{w}^{*}},
+\tag{10}\]</span></span></p>
+<p>which is the leftmost point of the efficient frontier.</p>
+</section>
+<section id="optimization-maximum-return" class="level3">
+<h3 class="anchored" data-anchor-id="optimization-maximum-return">2.2.4 Optimization: Maximum Return</h3>
+<p>Let <span class="math inline">\(n\)</span> be the number of assets, <span class="math inline">\(\mu_i\)</span> the estimated mean daily simple return of asset <span class="math inline">\(i\)</span>, and <span class="math inline">\(c\)</span> the per-asset weight cap, where <span class="math inline">\(1/n \le c \le 1\)</span>. The maximum return portfolio solves the linear program</p>
+<p><span id="eq-maxret-problem"><span class="math display">\[
+\max_{\mathbf{w} \in \mathbb{R}^n} \; \mathbf{w}^\top \boldsymbol{\mu}
+\quad \text{subject to} \quad
+\sum_{i=1}^{n} w_i = 1, \qquad 0 \le w_i \le c \quad (i = 1, \dots, n).
+\tag{11}\]</span></span></p>
+<p>Order the assets by decreasing mean return, <span class="math inline">\(\mu_{(1)} \ge \mu_{(2)} \ge \dots \ge \mu_{(n)}\)</span>, where <span class="math inline">\((j)\)</span> denotes the asset with the <span class="math inline">\(j\)</span>-th highest mean return. The solution fills the assets in that order, each up to the cap, until the budget is spent:</p>
+<p><span id="eq-maxret-solution"><span class="math display">\[
+w^{*}_{(j)} = \min\!\Big(c,\; \max\big(0,\; 1 - (j-1)\,c\big)\Big), \qquad j = 1, \dots, n.
+\tag{12}\]</span></span></p>
+<p>Equivalently, with <span class="math inline">\(m = \lfloor 1/c \rfloor\)</span>, the <span class="math inline">\(m\)</span> highest-return assets receive weight <span class="math inline">\(c\)</span>, the next receives the remainder <span class="math inline">\(1 - m\,c\)</span> (which is zero when <span class="math inline">\(1/c\)</span> is an integer), and all others receive zero:</p>
+<p><span id="eq-maxret-cases"><span class="math display">\[
+w^{*}_{(j)} =
+\begin{cases}
+c, &amp; j \le m, \\
+1 - m\,c, &amp; j = m + 1, \\
+0, &amp; j &gt; m + 1.
+\end{cases}
+\tag{13}\]</span></span></p>
+<p>This solution is exact. Moving weight from a filled asset <span class="math inline">\((j)\)</span> to any later asset <span class="math inline">\((k)\)</span> with <span class="math inline">\(k &gt; j\)</span> changes the expected return by <span class="math inline">\(\delta\,(\mu_{(k)} - \mu_{(j)}) \le 0\)</span> for a transfer of size <span class="math inline">\(\delta &gt; 0\)</span>, so no feasible reallocation improves on <a href="#eq-maxret-solution" class="quarto-xref">Equation&nbsp;12</a>. When mean returns are tied, the optimal weights are not unique, but the optimal return is.</p>
+<p>The annualized (arithmetic) expected return of this portfolio, in percent, is</p>
+<p><span id="eq-maxret-annualized"><span class="math display">\[
+R^{*}_{\text{ann}} = 252 \sum_{i=1}^{n} w^{*}_i \, \mu_i ,
+\tag{14}\]</span></span></p>
+<p>which is the top end of the efficient frontier.</p>
+</section>
+<section id="efficient-frontier-calculation" class="level3">
+<h3 class="anchored" data-anchor-id="efficient-frontier-calculation">2.2.5 Efficient Frontier Calculation</h3>
+<p>Let <span class="math inline">\(\mathbf{w}_{\text{MV}}\)</span> be the minimum variance portfolio (<a href="#eq-minvar-problem" class="quarto-xref">Equation&nbsp;8</a>) and <span class="math inline">\(\mathbf{w}^{*}\)</span> the maximum return portfolio (<a href="#eq-maxret-solution" class="quarto-xref">Equation&nbsp;12</a>), with daily expected returns</p>
+<p><span id="eq-frontier-endpoints"><span class="math display">\[
+R_{\min} = \mathbf{w}_{\text{MV}}^\top \boldsymbol{\mu},
+\qquad
+R_{\max} = \mathbf{w}^{*\top} \boldsymbol{\mu}.
+\tag{15}\]</span></span></p>
+<p>The frontier is traced at <span class="math inline">\(K\)</span> target daily returns, evenly spaced between them:</p>
+<p><span id="eq-frontier-targets"><span class="math display">\[
+R_k = R_{\min} + \frac{k-1}{K-1} \left( R_{\max} - R_{\min} \right),
+\qquad k = 1, \dots, K.
+\tag{16}\]</span></span></p>
+<p>For each target, the frontier portfolio <span class="math inline">\(\mathbf{w}_k\)</span> solves</p>
+<p><span id="eq-frontier-problem"><span class="math display">\[
+\min_{\mathbf{w} \in \mathbb{R}^n} \; \mathbf{w}^\top \boldsymbol{\Sigma}\, \mathbf{w}
+\quad \text{subject to} \quad
+\mathbf{w}^\top \boldsymbol{\mu} = R_k, \qquad
+\sum_{i=1}^{n} w_i = 1, \qquad 0 \le w_i \le c \quad (i = 1, \dots, n),
+\tag{17}\]</span></span></p>
+<p>which is <a href="#eq-minvar-problem" class="quarto-xref">Equation&nbsp;8</a> with one more linear equality constraint. Each is a convex quadratic program, strictly convex when <span class="math inline">\(\boldsymbol{\Sigma}\)</span> is positive definite, so each feasible target has a unique global minimum. Each is solved with SLSQP (<code>scipy.optimize.minimize</code>) from the equal-weight starting point, with finite-difference gradients. A target for which the solver does not converge is recorded as missing rather than failing the run. In practice this can happen only near <span class="math inline">\(R_{\max}\)</span>, where the feasible set shrinks toward the single corner portfolio <span class="math inline">\(\mathbf{w}^{*}\)</span>.</p>
+<p>Because the targets start at the minimum variance portfolio’s return, only the efficient (upper) branch of the minimum variance frontier is traced. For <span class="math inline">\(R_k \ge R_{\min}\)</span>, the equality <span class="math inline">\(\mathbf{w}^\top \boldsymbol{\mu} = R_k\)</span> gives the same solution as the inequality <span class="math inline">\(\mathbf{w}^\top \boldsymbol{\mu} \ge R_k\)</span>.</p>
+<p>Each frontier point is plotted at its annualized volatility and annualized (arithmetic) expected return, in percent:</p>
+<p><span id="eq-frontier-annualized"><span class="math display">\[
+\left( \sigma_{\text{ann},k},\; R_{\text{ann},k} \right)
+= \left( \sqrt{252}\, \sqrt{\mathbf{w}_k^\top \boldsymbol{\Sigma}\, \mathbf{w}_k},\;\; 252\, R_k \right).
+\tag{18}\]</span></span></p>
+</section>
+<section id="capital-allocation-line-calculation" class="level3">
+<h3 class="anchored" data-anchor-id="capital-allocation-line-calculation">2.2.6 Capital Allocation Line Calculation</h3>
+<p>Let <span class="math inline">\(\mathbf{w}^{*}_{S}\)</span> be the maximum Sharpe ratio portfolio (<a href="#eq-maxsharpe-problem" class="quarto-xref">Equation&nbsp;6</a>), with annualized expected return, volatility, and Sharpe ratio</p>
+<p><span id="eq-cal-tangency"><span class="math display">\[
+R^{*}_{S} = 252\, \mathbf{w}^{*\top}_{S} \boldsymbol{\mu},
+\qquad
+\sigma^{*}_{S} = \sqrt{252}\, \sqrt{\mathbf{w}^{*\top}_{S} \boldsymbol{\Sigma}\, \mathbf{w}^{*}_{S}},
+\qquad
+S^{*}_{\text{ann}} = \frac{R^{*}_{S} - r_{f,\text{ann}}}{\sigma^{*}_{S}}.
+\tag{19}\]</span></span></p>
+<p>Consider holding a fraction <span class="math inline">\(\alpha\)</span> of wealth in this portfolio and <span class="math inline">\(1 - \alpha\)</span> in the risk-free asset, which earns <span class="math inline">\(r_{f,\text{ann}}\)</span> with zero volatility. The combination has annualized expected return and volatility</p>
+<p><span id="eq-cal-mix"><span class="math display">\[
+R(\alpha) = (1 - \alpha)\, r_{f,\text{ann}} + \alpha\, R^{*}_{S},
+\qquad
+\sigma(\alpha) = \alpha\, \sigma^{*}_{S},
+\qquad 0 \le \alpha \le 1.
+\tag{20}\]</span></span></p>
+<p>Eliminating <span class="math inline">\(\alpha\)</span> gives the capital allocation line (CAL):</p>
+<p><span id="eq-cal-line"><span class="math display">\[
+R = r_{f,\text{ann}} + S^{*}_{\text{ann}}\, \sigma,
+\qquad 0 \le \sigma \le \sigma^{*}_{S}.
+\tag{21}\]</span></span></p>
+<p>Its intercept is the annual risk-free rate, and its slope is the annualized maximum Sharpe ratio. The line is straight in these coordinates because returns and volatilities are annualized arithmetically (<a href="#eq-sharpe-annualized" class="quarto-xref">Equation&nbsp;7</a>). It is restricted to <span class="math inline">\(\alpha \le 1\)</span>, ending at the maximum Sharpe ratio portfolio, because <span class="math inline">\(\alpha &gt; 1\)</span> would require borrowing at the risk-free rate (leverage), which is outside the scope of this analysis.</p>
+<p>Because <span class="math inline">\(\mathbf{w}^{*}_{S}\)</span> maximizes the slope <span class="math inline">\(S_{\text{ann}}(\mathbf{w})\)</span> from <span class="math inline">\((0, r_{f,\text{ann}})\)</span> over all feasible portfolios, no feasible portfolio lies above the line: the CAL touches the feasible set, and the efficient frontier, at <span class="math inline">\(\mathbf{w}^{*}_{S}\)</span>.</p>
+<p>For plotting, the line is sampled at <span class="math inline">\(J\)</span> evenly spaced values of <span class="math inline">\(\alpha\)</span>:</p>
+<p><span id="eq-cal-points"><span class="math display">\[
+\alpha_j = \frac{j - 1}{J - 1},
+\qquad
+\left( \sigma_j,\; R_j \right) = \left( \alpha_j\, \sigma^{*}_{S},\;\; (1 - \alpha_j)\, r_{f,\text{ann}} + \alpha_j\, R^{*}_{S} \right),
+\qquad j = 1, \dots, J.
+\tag{22}\]</span></span></p>
+</section>
+<section id="monte-carlo-portfolios" class="level3">
+<h3 class="anchored" data-anchor-id="monte-carlo-portfolios">2.2.7 Monte Carlo Portfolios</h3>
+<p>Let <span class="math inline">\(\Delta_n = \{ \mathbf{w} \in \mathbb{R}^n : \sum_i w_i = 1,\; w_i \ge 0 \}\)</span> be the long-only, fully invested simplex, and</p>
+<p><span id="eq-feasible-set"><span class="math display">\[
+\mathcal{C} = \{ \mathbf{w} \in \Delta_n : w_i \le c \;\; (i = 1, \dots, n) \}
+\tag{23}\]</span></span></p>
+<p>the feasible set shared by <a href="#eq-maxret-problem" class="quarto-xref">Equation&nbsp;11</a>, <a href="#eq-maxsharpe-problem" class="quarto-xref">Equation&nbsp;6</a>, <a href="#eq-minvar-problem" class="quarto-xref">Equation&nbsp;8</a>, and <a href="#eq-frontier-problem" class="quarto-xref">Equation&nbsp;17</a>.</p>
+<p>The <span class="math inline">\(M\)</span> random portfolios are drawn uniformly from <span class="math inline">\(\mathcal{C}\)</span> by rejection sampling. Candidates are drawn from the flat Dirichlet distribution, which is uniform on <span class="math inline">\(\Delta_n\)</span>,</p>
+<p><span id="eq-dirichlet"><span class="math display">\[
+\tilde{\mathbf{w}} \sim \operatorname{Dirichlet}(\mathbf{1}_n),
+\qquad
+p(\tilde{\mathbf{w}}) = (n-1)! \quad \text{for } \tilde{\mathbf{w}} \in \Delta_n,
+\tag{24}\]</span></span></p>
+<p>and a candidate is accepted only if <span class="math inline">\(\max_i \tilde{w}_i \le c\)</span>. Because the proposal density is constant on <span class="math inline">\(\Delta_n\)</span> and <span class="math inline">\(\mathcal{C} \subseteq \Delta_n\)</span>, the accepted portfolios <span class="math inline">\(\mathbf{w}^{(1)}, \dots, \mathbf{w}^{(M)}\)</span> are independent and uniform on <span class="math inline">\(\mathcal{C}\)</span>. The draws use a fixed random seed, so they are reproducible. Each portfolio is plotted at its annualized volatility and annualized (arithmetic) expected return, in percent:</p>
+<p><span id="eq-random-points"><span class="math display">\[
+\left( \sigma^{(m)},\; R^{(m)} \right)
+= \left( \sqrt{252}\, \sqrt{\mathbf{w}^{(m)\top} \boldsymbol{\Sigma}\, \mathbf{w}^{(m)}},\;\; 252\, \mathbf{w}^{(m)\top} \boldsymbol{\mu} \right),
+\qquad m = 1, \dots, M.
+\tag{25}\]</span></span></p>
+<p><strong>Where the cloud sits.</strong> <span class="math inline">\(\mathcal{C}\)</span> is symmetric under permutations of the assets, so a uniform draw has <span class="math inline">\(\mathbb{E}[\mathbf{w}] = \tfrac{1}{n} \mathbf{1}_n\)</span>, with or without the cap. The cloud is therefore centered on the equal-weight portfolio:</p>
+<p><span id="eq-random-mean"><span class="math display">\[
+\mathbb{E}\big[ R^{(m)} \big] = \bar{R} = \frac{1}{n} \sum_{i=1}^{n} R_i,
+\qquad R_i = 252\, \mu_i .
+\tag{26}\]</span></span></p>
+<p>Without the cap (<span class="math inline">\(c = 1\)</span>), the Dirichlet moments <span class="math inline">\(\operatorname{Var}(w_i) = \frac{n-1}{n^2(n+1)}\)</span> and <span class="math inline">\(\operatorname{Cov}(w_i, w_j) = -\frac{1}{n^2(n+1)}\)</span> give the spread of the cloud’s returns:</p>
+<p><span id="eq-random-spread"><span class="math display">\[
+\operatorname{SD}\big( R^{(m)} \big) = \sqrt{ \frac{ \sum_{i=1}^{n} \left( R_i - \bar{R} \right)^2 }{ n\,(n+1) } }.
+\tag{27}\]</span></span></p>
+<p>This is roughly the assets’ own cross-sectional spread divided by <span class="math inline">\(\sqrt{n+1}\)</span>, and a binding cap narrows it further. The efficient frontier’s high-return end, by contrast, consists of concentrated portfolios near the corners of <span class="math inline">\(\mathcal{C}\)</span> (<a href="#eq-maxret-cases" class="quarto-xref">Equation&nbsp;13</a>), which have little volume under a uniform distribution when <span class="math inline">\(n\)</span> is large. So the cloud illustrates the feasible region but does not fill it, and few draws come near the frontier.</p>
+<p><strong>Share near the frontier.</strong> Let <span class="math inline">\(\hat{f}(\sigma)\)</span> be the efficient frontier’s return at volatility <span class="math inline">\(\sigma\)</span>, interpolated linearly between the reached points of <a href="#eq-frontier-annualized" class="quarto-xref">Equation&nbsp;18</a>. Below the least volatile point it equals <span class="math inline">\(R_{\text{ann},1}\)</span>, and above the most volatile point it equals the highest frontier return. For a tolerance <span class="math inline">\(\tau\)</span> in percentage points, the reported share is</p>
+</section>
+<section id="backtest-methodology" class="level3">
+<h3 class="anchored" data-anchor-id="backtest-methodology">2.2.8 Backtest Methodology</h3>
+<p>Index NYSE trading sessions by <span class="math inline">\(s\)</span>, and let <span class="math inline">\(t\)</span> be the last session (the as-of date). The backtest has three settings: <span class="math inline">\(E\)</span> scored sessions, <span class="math inline">\(T\)</span> daily returns per training window, and a rebalance every <span class="math inline">\(H\)</span> sessions, where <span class="math inline">\(H\)</span> divides <span class="math inline">\(E\)</span>. In this section, daily simple returns are fractions, <span class="math inline">\(r_{s,i} = P_{s,i} / P_{s-1,i} - 1\)</span>; reported values are converted to percent.</p>
+<p><strong>Schedule.</strong> There are <span class="math inline">\(K = E / H\)</span> rebalances, at the closes of</p>
+<p><span id="eq-bt-schedule"><span class="math display">\[
+\tau_k = t - E + (k - 1)\, H, \qquad k = 1, \dots, K,
+\tag{28}\]</span></span></p>
+<p>so the first is at <span class="math inline">\(t - E\)</span> and the last at <span class="math inline">\(t - H\)</span>. There is no rebalance at <span class="math inline">\(t\)</span>. Holding period <span class="math inline">\(k\)</span> is the <span class="math inline">\(H\)</span> sessions <span class="math inline">\(\tau_k + 1, \dots, \tau_k + H\)</span>. The holding periods are consecutive, do not overlap, and together cover the scored sessions <span class="math inline">\(t - E + 1, \dots, t\)</span>.</p>
+<p><strong>Max Sharpe ratio portfolio.</strong> At each rebalance, <span class="math inline">\(\boldsymbol{\mu}^{(k)}\)</span> and <span class="math inline">\(\boldsymbol{\Sigma}^{(k)}\)</span> are estimated as in <a href="#eq-estimates" class="quarto-xref">Equation&nbsp;5</a> from the <span class="math inline">\(T\)</span> returns ending at the close of <span class="math inline">\(\tau_k\)</span>, that is, from the <span class="math inline">\(T + 1\)</span> closes <span class="math inline">\(P_{\tau_k - T}, \dots, P_{\tau_k}\)</span>. The risk-free rate <span class="math inline">\(r_f^{(k)}\)</span> is the last DTB3 observation dated strictly before <span class="math inline">\(\tau_k\)</span>, divided by 252. The target weights solve</p>
+<p><span id="eq-bt-maxsharpe"><span class="math display">\[
+\mathbf{w}^{S}_{k} = \arg\max_{\mathbf{w} \in \mathcal{C}} \;
+\frac{\mathbf{w}^\top \boldsymbol{\mu}^{(k)} - r_f^{(k)}}{\sqrt{\mathbf{w}^\top \boldsymbol{\Sigma}^{(k)}\, \mathbf{w}}},
+\tag{29}\]</span></span></p>
+<p>which is <a href="#eq-maxsharpe-problem" class="quarto-xref">Equation&nbsp;6</a> on the feasible set <a href="#eq-feasible-set" class="quarto-xref">Equation&nbsp;23</a>, solved with SLSQP. Every input ends at <span class="math inline">\(\tau_k\)</span>, before the first return of holding period <span class="math inline">\(k\)</span>, so there is no look-ahead. If the solver does not converge, or its weights violate the constraints, the fallback applies: <span class="math inline">\(\mathbf{w}^{S}_{k} = \mathbf{w}^{S}_{k-1}\)</span>, or <span class="math inline">\(\tfrac{1}{n}\mathbf{1}_n\)</span> when <span class="math inline">\(k = 1\)</span>.</p>
+<p><strong>Equal-weight baseline.</strong> On the same dates, <span class="math inline">\(\mathbf{w}^{\text{EW}}_{k} = \tfrac{1}{n}\mathbf{1}_n\)</span>.</p>
+<p><strong>Holding and drift.</strong> Between rebalances, nothing is traded. For a portfolio with target weights <span class="math inline">\(\mathbf{w}_k\)</span>, the value of position <span class="math inline">\(i\)</span> at the close of session <span class="math inline">\(s\)</span> in holding period <span class="math inline">\(k\)</span> is</p>
+<p><span id="eq-bt-positions"><span class="math display">\[
+v_{s,i} = w_{k,i} \prod_{u = \tau_k + 1}^{s} \left( 1 + r_{u,i} \right),
+\qquad s = \tau_k + 1, \dots, \tau_k + H,
+\tag{30}\]</span></span></p>
+<p>with <span class="math inline">\(v_{\tau_k, i} = w_{k,i}\)</span>. The portfolio’s daily return is</p>
+<p><span id="eq-bt-return"><span class="math display">\[
+r^{p}_{s} = \frac{\sum_i v_{s,i}}{\sum_i v_{s-1,i}} - 1
+= \sum_{i=1}^{n} \tilde{w}_{s-1,i}\, r_{s,i},
+\qquad
+\tilde{w}_{s-1,i} = \frac{v_{s-1,i}}{\sum_j v_{s-1,j}},
+\tag{31}\]</span></span></p>
+<p>where <span class="math inline">\(\tilde{\mathbf{w}}_{s-1}\)</span> are the drifted weights. These satisfy the budget and long-only constraints, but can exceed the cap <span class="math inline">\(c\)</span> between rebalances.</p>
+<p><strong>Wealth.</strong> Both portfolios start with $1 at the close of <span class="math inline">\(t - E\)</span> and compound their <span class="math inline">\(E\)</span> daily returns:</p>
+<p><span id="eq-bt-wealth"><span class="math display">\[
+W_{t-E} = 1,
+\qquad
+W_s = W_{s-1} \left( 1 + r^{p}_{s} \right),
+\qquad s = t - E + 1, \dots, t.
+\tag{32}\]</span></span></p>
+<p><strong>Metrics.</strong> For each portfolio, in percent:</p>
+<p><span id="eq-bt-metrics"><span class="math display">\[
+\begin{aligned}
+\text{Cumulative return} &amp;= 100 \left( W_t - 1 \right), \\
+\text{CAGR} &amp;= 100 \left( W_t^{\,252 / E} - 1 \right), \\
+\text{Maximum drawdown} &amp;= 100 \min_{t - E \le s \le t} \left( \frac{W_s}{\max_{t - E \le u \le s} W_u} - 1 \right), \\
+\text{Annualized volatility (realized)} &amp;= 100 \sqrt{252}\;
+\sqrt{ \frac{1}{E - 1} \sum_{s = t - E + 1}^{t} \left( r^{p}_{s} - \bar{r}^{p} \right)^2 },
+\end{aligned}
+\tag{33}\]</span></span></p>
+<p>where <span class="math inline">\(\bar{r}^{p}\)</span> is the mean of the <span class="math inline">\(E\)</span> daily returns. CAGR is compounded, unlike the arithmetic annualization of <a href="#eq-sharpe-annualized" class="quarto-xref">Equation&nbsp;7</a>. The initial $1 counts toward the running peak in the drawdown.</p>
+<p><strong>Live portfolio.</strong> One more optimization, <a href="#eq-bt-maxsharpe" class="quarto-xref">Equation&nbsp;29</a> at <span class="math inline">\(\tau = t\)</span> with the same <span class="math inline">\(T\)</span> and the same risk-free rule, gives the current maximum Sharpe ratio portfolio. It is the portfolio reported by the optimization, and it holds nothing in the backtest (see <a href="#fig-mean-variance" class="quarto-xref">Figure&nbsp;2</a>).</p>
+<p><span id="eq-near-frontier"><span class="math display">\[
+\text{share}_\tau = \frac{1}{M} \sum_{m=1}^{M} \mathbb{1}\!\left[ \hat{f}\big(\sigma^{(m)}\big) - R^{(m)} \le \tau \right].
+\tag{34}\]</span></span></p>
+<p>The true frontier is concave in <span class="math inline">\((\sigma, R)\)</span>, so the chords of <span class="math inline">\(\hat{f}\)</span> lie on or below it, and <a href="#eq-near-frontier" class="quarto-xref">Equation&nbsp;34</a> can only overstate the share.</p>
 </section>
 </section>
-<section id="time-series-forecasting" class="level2">
-<h2 class="anchored" data-anchor-id="time-series-forecasting">3. Time-Series Forecasting</h2>
-<section id="introduction-1" class="level3">
-<h3 class="anchored" data-anchor-id="introduction-1">3.1 Introduction</h3>
+<section id="results" class="level2">
+<h2 class="anchored" data-anchor-id="results">2.3 Results</h2>
+<p>Still using results as of <strong>November 2, 2026</strong>, let’s dive into the each portfolio optimization to see how they compare.</p>
+<p><a href="#tbl-individual-assets" class="quarto-xref">Table&nbsp;1</a> shows the performane of individual tickers annualized with the same method as other results in this study. No optimization allowed more than 40.0% in any one ticker, so a single ticker is not a feasible portfolio. This table shows which tickers pull the random portfolios and the frontier toward higher or lower return and volatility.</p>
+<div id="tbl-individual-assets" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-individual-assets-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: Each ticker held on its own, estimated from the same daily data as the optimization (annualized, arithmetic, in percent) as of November 2, 2026
+</figcaption>
+<div aria-describedby="tbl-individual-assets-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Ticker</th>
+<th style="text-align: right;">Annualized return (%)</th>
+<th style="text-align: right;">Annualized volatility (<span class="math inline">\(\sigma\)</span>, %)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">XLE</td>
+<td style="text-align: right;">45.58</td>
+<td style="text-align: right;">22.58</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">XBI</td>
+<td style="text-align: right;">34.88</td>
+<td style="text-align: right;">29.14</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">VXUS</td>
+<td style="text-align: right;">11.37</td>
+<td style="text-align: right;">17.23</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">VOO</td>
+<td style="text-align: right;">10.86</td>
+<td style="text-align: right;">12.79</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">QQQ</td>
+<td style="text-align: right;">10.48</td>
+<td style="text-align: right;">20.27</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NVDA</td>
+<td style="text-align: right;">6.50</td>
+<td style="text-align: right;">37.32</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">GLD</td>
+<td style="text-align: right;">1.78</td>
+<td style="text-align: right;">28.55</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">FXE</td>
+<td style="text-align: right;">-3.16</td>
+<td style="text-align: right;">5.41</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">IBIT</td>
+<td style="text-align: right;">-23.10</td>
+<td style="text-align: right;">44.87</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ETHA</td>
+<td style="text-align: right;">-30.37</td>
+<td style="text-align: right;">62.31</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>Optimizing each portfolio with different objective functions yields a different selection of assets with differing weights, as listed in <a href="#tbl-portfolio-weights" class="quarto-xref">Table&nbsp;2</a>. Each objective function selected 3 to 4 weights and distributed them differently. A few observations according to each objective function are listed below. While the objective functions differ, all optimizations obey the same constraints: long positions only, all weights sum to 100%, and no more than 40% in any single ticker.</p>
+<ol type="1">
+<li><p><strong>Max Sharpe ratio objective</strong> This objective function selected 3 assets: XLE, VOO, and XBI (ETFs representing the energy sector, S&amp;P 500, and biotech) with approximate weights of 40%, 38%, and 22% respectively. Of the three objectives, this portfolio has the most even distribution of weights among its selected assets.</p></li>
+<li><p><strong>Minimum variance objective</strong> This objective selected 4 assets XLE, VOO, XBI, and FXE (ETFs representing the energy sector, S&amp;P 500, biotech sector, EUR/USD exchange) with approximate weights of 19%, 40%, 1%, and 40%, respectively. Like the Max Sharpe objective, it drops assets that are wildly volatile or negative/weakly positive returns.</p></li>
+<li><p><strong>Maximum return objective</strong> This optimization took the most risks by concentrating its allocations in XLE, XBI, and VXUS (ETFs for the energy and biotech sectors and stock markets outside the U.S.)</p></li>
+</ol>
+<p>All optimizations selected the energy sector, and 2 optimization selected the biotech sector (at least to a significant extent). All 3 objectives dropped assets that are wildly volatile or negative/weakly positive returns.</p>
+<p><a href="#tbl-portfolio-weights" class="quarto-xref">Table&nbsp;2</a> lists the weights of each asset in portfolios optimized according to the opjective function in the column name.</p>
+<div id="tbl-portfolio-weights" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-portfolio-weights-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2: Optimized portfolio asset weights by objective function
+</figcaption>
+<div aria-describedby="tbl-portfolio-weights-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Ticker</th>
+<th style="text-align: right;">Max Sharpe Weight</th>
+<th style="text-align: right;">Min Variance Weight</th>
+<th style="text-align: right;">Max Return Weight</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>XLE</td>
+<td style="text-align: right;">40.00%</td>
+<td style="text-align: right;">19.24%</td>
+<td style="text-align: right;">40.00%</td>
+</tr>
+<tr class="even">
+<td>VOO</td>
+<td style="text-align: right;">38.28%</td>
+<td style="text-align: right;">40.00%</td>
+<td style="text-align: right;">0.00%</td>
+</tr>
+<tr class="odd">
+<td>XBI</td>
+<td style="text-align: right;">21.72%</td>
+<td style="text-align: right;">0.76%</td>
+<td style="text-align: right;">40.00%</td>
+</tr>
+<tr class="even">
+<td>FXE</td>
+<td style="text-align: right;">0.00%</td>
+<td style="text-align: right;">40.00%</td>
+<td style="text-align: right;">0.00%</td>
+</tr>
+<tr class="odd">
+<td>VXUS</td>
+<td style="text-align: right;">0.00%</td>
+<td style="text-align: right;">0.00%</td>
+<td style="text-align: right;">20.00%</td>
+</tr>
+<tr class="even">
+<td>ETHA</td>
+<td style="text-align: right;">0.00%</td>
+<td style="text-align: right;">0.00%</td>
+<td style="text-align: right;">0.00%</td>
+</tr>
+<tr class="odd">
+<td>GLD</td>
+<td style="text-align: right;">0.00%</td>
+<td style="text-align: right;">0.00%</td>
+<td style="text-align: right;">0.00%</td>
+</tr>
+<tr class="even">
+<td>IBIT</td>
+<td style="text-align: right;">0.00%</td>
+<td style="text-align: right;">0.00%</td>
+<td style="text-align: right;">0.00%</td>
+</tr>
+<tr class="odd">
+<td>NVDA</td>
+<td style="text-align: right;">0.00%</td>
+<td style="text-align: right;">0.00%</td>
+<td style="text-align: right;">0.00%</td>
+</tr>
+<tr class="even">
+<td>QQQ</td>
+<td style="text-align: right;">0.00%</td>
+<td style="text-align: right;">0.00%</td>
+<td style="text-align: right;">0.00%</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<div id="fig-mean-variance" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-mean-variance-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig02-mean-variance-portfolio-optimization.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mean-variance-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: Figure 2. Mean-variance portfolio optimization plot as of November 2, 2026.
+</figcaption>
+</figure>
+</div>
+<p>In <a href="#fig-mean-variance" class="quarto-xref">Figure&nbsp;2</a> the random portfolios illustrate the feasible risk–return combinations generated by different portfolio weights. The efficient frontier traces the upper boundary of this feasible set, from the minimum-variance portfolio to the maximum-return portfolio, and represents portfolios that maximize expected return for a given level of volatility. Portfolios below and to the right of the frontier are mean–variance inefficient because another feasible portfolio offers higher expected return for the same risk, lower risk for the same expected return, or both.</p>
+<p>In <a href="#fig-mean-variance" class="quarto-xref">Figure&nbsp;2</a> the capital allocation line begins at the risk-free rate and is tangent to the efficient frontier at the maximum-Sharpe-ratio portfolio. Its slope is the Sharpe ratio, so the tangency portfolio provides the greatest expected excess return per unit of volatility among the risky portfolios considered. Investors able to combine the risk-free asset with the risky portfolio can therefore move along this line to select different overall risk levels while retaining the same optimal risky-asset portfolio.</p>
 </section>
-<section id="methods-1" class="level3">
-<h3 class="anchored" data-anchor-id="methods-1">3.2 Methods</h3>
-</section>
-<section id="results-1" class="level3">
-<h3 class="anchored" data-anchor-id="results-1">3.3 Results</h3>
-</section>
-<section id="discussion-1" class="level3">
-<h3 class="anchored" data-anchor-id="discussion-1">3.4 Discussion</h3>
+<section id="discussion" class="level2">
+<h2 class="anchored" data-anchor-id="discussion">2.4 Discussion</h2>
 </section>
 </section>
-<section id="integration-and-future-work" class="level2">
-<h2 class="anchored" data-anchor-id="integration-and-future-work">4. Integration and Future Work</h2>
-<p>The optimization and forecasting components are currently evaluated independently. Forecast estimates are not used as expected-return inputs to portfolio optimization because the forecasting analysis does not demonstrate sufficient out-of-sample improvement over a naive persistence benchmark. Integration therefore remains a potential extension rather than an assumption of the current system.</p>
+<section id="time-series-forecasting" class="level1">
+<h1>3. Time-Series Forecasting</h1>
+<section id="introduction-1" class="level2">
+<h2 class="anchored" data-anchor-id="introduction-1">3.1 Introduction</h2>
+<div id="fig-timeseries-and-metrics" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-timeseries-and-metrics-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig03-timeseries-and-metrics.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-timeseries-and-metrics-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: ARIMA and naive models of FXE prices as of November 2, 2026.
+</figcaption>
+</figure>
+</div>
+<p>As with the portfolio optimization, to provide an analysis of a consistent snapshot of the calculations and UI, the <strong>data is as of November 2, 2026</strong>. The goal of this part of the project is the following:</p>
+<ol type="1">
+<li><p>Walk-forward training of ARIMA models, based on 252 trading days of adjusted close data, and using these models to predict the out-of-sample adjusted close 1 day ahead of the training window.</p></li>
+<li><p>Compare these trained ARIMA models to a baseline/naive persistence forecast that assumes the next day’s adjusted close price is equal the current day.</p></li>
+<li><p>Calculate performance metrics for both ARIMA and naive model to determine if the ARIMA model beat the naive forecast.</p></li>
+</ol>
+</section>
+<section id="methods-1" class="level2">
+<h2 class="anchored" data-anchor-id="methods-1">3.2 Methods</h2>
+<section id="walk-forward-arima-training-and-out-of-sample-forecasting" class="level3">
+<h3 class="anchored" data-anchor-id="walk-forward-arima-training-and-out-of-sample-forecasting">3.2.1 Walk-Forward ARIMA Training and Out-of-Sample Forecasting</h3>
+<p>Let <span class="math inline">\(t\)</span> be the last session in the data (the as-of date), <span class="math inline">\(L\)</span> the number of log returns in each training window, and <span class="math inline">\(E\)</span> the number of scored sessions. The procedure uses the <span class="math inline">\(L + E + 1\)</span> most recent closes of each ticker, <span class="math inline">\(P_{t-L-E}, \dots, P_t\)</span>.</p>
+<p><strong>Forecast origins.</strong> There are <span class="math inline">\(E + 1\)</span> training windows, one per forecast origin</p>
+<p><span id="eq-wf-origins"><span class="math display">\[
+\tau_j = t - E + j, \qquad j = 0, 1, \dots, E.
+\tag{35}\]</span></span></p>
+<p>Window <span class="math inline">\(j\)</span> holds the <span class="math inline">\(L + 1\)</span> closes <span class="math inline">\(P_{\tau_j - L}, \dots, P_{\tau_j}\)</span>, that is, the <span class="math inline">\(L\)</span> log returns <span class="math inline">\(y_{\tau_j - L + 1}, \dots, y_{\tau_j}\)</span> (<a href="#eq-arima-logret" class="quarto-xref">Equation&nbsp;37</a>), and produces a one-step-ahead forecast of the close on session <span class="math inline">\(\tau_j + 1\)</span>. Consecutive windows overlap in all but one observation: each slides forward by one session.</p>
+<ul>
+<li>For <span class="math inline">\(j = 0, \dots, E - 1\)</span>, the forecast session <span class="math inline">\(\tau_j + 1 \in \{ t - E + 1, \dots, t \}\)</span> has an actual close. These <span class="math inline">\(E\)</span> forecasts are the out-of-sample backtest scored in <a href="#eq-fc-scored" class="quarto-xref">Equation&nbsp;43</a>, over the same sessions as the portfolio backtest (<a href="#eq-bt-schedule" class="quarto-xref">Equation&nbsp;28</a>).</li>
+<li>For <span class="math inline">\(j = E\)</span>, the forecast session is <span class="math inline">\(t + 1\)</span>, the next trading day, whose close is not yet known. This is the live forecast, and it is never scored.</li>
+</ul>
+<p><strong>Procedure.</strong> For each ticker and each origin <span class="math inline">\(\tau_j\)</span>, independently:</p>
+<ol type="1">
+<li>Compute the <span class="math inline">\(L\)</span> log returns of window <span class="math inline">\(j\)</span>. They end at the close of <span class="math inline">\(\tau_j\)</span>, so nothing from session <span class="math inline">\(\tau_j + 1\)</span> or later is used.</li>
+<li>Fit every candidate in <span class="math inline">\(\mathcal{O}\)</span> (<a href="#eq-arima-candidates" class="quarto-xref">Equation&nbsp;38</a>) on the whole window by maximum likelihood (<a href="#eq-arima-model" class="quarto-xref">Equation&nbsp;39</a>).</li>
+<li>Select <span class="math inline">\((p^{*}_j, q^{*}_j)\)</span> by <a href="#eq-arima-select" class="quarto-xref">Equation&nbsp;41</a>. The order is re-selected for every window and ticker, so it can change from one forecast to the next.</li>
+<li>Forecast with the selected model, already fit in step 2:</li>
+</ol>
+<p><span id="eq-wf-forecast"><span class="math display">\[
+\hat{P}^{A}_{\tau_j + 1} = P_{\tau_j} \exp\!\big( \hat{y}_{\tau_j + 1 \mid \tau_j} \big),
+\qquad
+\hat{P}^{N}_{\tau_j + 1} = P_{\tau_j},
+\tag{36}\]</span></span></p>
+<p>where <span class="math inline">\(\hat{y}_{\tau_j + 1 \mid \tau_j}\)</span> is the conditional mean of the next log return given window <span class="math inline">\(j\)</span> (<a href="#eq-arima-forecast" class="quarto-xref">Equation&nbsp;42</a>).</p>
+<p>Every parameter estimate, order choice, and forecast for session <span class="math inline">\(\tau_j + 1\)</span> depends only on closes up to <span class="math inline">\(\tau_j\)</span>, so the backtest has no look-ahead. Each window is fit from scratch: no parameters or orders are carried over from the previous window. The <span class="math inline">\((E + 1) \times n\)</span> fits are therefore independent, and can be computed in parallel without changing the result.</p>
+<p><strong>Calendar.</strong> Sessions are NYSE trading days. A window holds consecutive sessions, so one model time step is one trading session: weekends and exchange holidays are skipped, not treated as missing observations.</p>
+<p><strong>Missing data.</strong> Windows are built from the sessions actually present in the data. If a whole session is missing, no window ends on it, so there is no forecast for the session after it. If only one ticker’s close at the origin <span class="math inline">\(\tau_j\)</span> is missing, that ticker’s ARIMA forecast for <span class="math inline">\(\tau_j + 1\)</span> is left empty rather than replaced with a two-step-ahead forecast from an older close. Its naive forecast uses the most recent observed close. Such sessions drop out of <span class="math inline">\(\mathcal{D}\)</span> in <a href="#eq-fc-scored" class="quarto-xref">Equation&nbsp;43</a> for both models.</p>
+</section>
+<section id="selecting-arima-order" class="level3">
+<h3 class="anchored" data-anchor-id="selecting-arima-order">3.2.2 Selecting ARIMA Order</h3>
+<p>Let <span class="math inline">\(P_{s}\)</span> be the adjusted close of one ticker on NYSE session <span class="math inline">\(s\)</span>, and</p>
+<p><span id="eq-arima-logret"><span class="math display">\[
+y_s = \ln P_s - \ln P_{s-1}
+\tag{37}\]</span></span></p>
+<p>its daily log return. To forecast session <span class="math inline">\(\tau + 1\)</span>, a model is fit on the <span class="math inline">\(L\)</span> log returns ending at the close of <span class="math inline">\(\tau\)</span>, that is, <span class="math inline">\(y_{\tau - L + 1}, \dots, y_{\tau}\)</span>, computed from the <span class="math inline">\(L + 1\)</span> closes <span class="math inline">\(P_{\tau - L}, \dots, P_{\tau}\)</span>. The window slides forward one session for each forecast, so each forecast uses only data available before the session it predicts.</p>
+<p><strong>Candidate models.</strong> For each order <span class="math inline">\((p, q)\)</span> in the candidate set</p>
+<p><span id="eq-arima-candidates"><span class="math display">\[
+\mathcal{O} = \{ (p, q) : p \in \{0, \dots, \bar{p}\},\; q \in \{0, \dots, \bar{q}\} \} \setminus \{(0, 0)\},
+\tag{38}\]</span></span></p>
+<p>the log returns are modeled as a constant mean plus a stationary, invertible ARMA(<span class="math inline">\(p\)</span>, <span class="math inline">\(q\)</span>) process with Gaussian innovations:</p>
+<p><span id="eq-arima-model"><span class="math display">\[
+y_s = m + u_s,
+\qquad
+u_s = \sum_{j=1}^{p} \phi_j\, u_{s-j} + \varepsilon_s + \sum_{j=1}^{q} \theta_j\, \varepsilon_{s-j},
+\qquad
+\varepsilon_s \overset{\text{iid}}{\sim} \mathcal{N}(0, \sigma^2).
+\tag{39}\]</span></span></p>
+<p>This is ARIMA(<span class="math inline">\(p\)</span>, 0, <span class="math inline">\(q\)</span>) on log returns, which is ARIMA(<span class="math inline">\(p\)</span>, 1, <span class="math inline">\(q\)</span>) on log prices. The constant <span class="math inline">\(m\)</span> is the drift: the expected daily log return. The parameters <span class="math inline">\(\boldsymbol{\vartheta}_{pq} = (m, \phi_1, \dots, \phi_p, \theta_1, \dots, \theta_q, \sigma^2)\)</span> are estimated by exact Gaussian maximum likelihood, with the likelihood evaluated by the Kalman filter.</p>
+<p><strong>Order selection.</strong> Each candidate is fit once on the whole window, and scored by the Bayesian information criterion</p>
+<p><span id="eq-arima-bic"><span class="math display">\[
+\operatorname{BIC}(p, q) = -2 \ln \hat{\mathcal{L}}_{pq} + k_{pq} \ln L,
+\qquad
+k_{pq} = p + q + 2,
+\tag{40}\]</span></span></p>
+<p>where <span class="math inline">\(\hat{\mathcal{L}}_{pq}\)</span> is the maximized likelihood, and <span class="math inline">\(k_{pq}\)</span> counts the AR and MA coefficients, the mean <span class="math inline">\(m\)</span>, and the innovation variance <span class="math inline">\(\sigma^2\)</span>. A candidate whose fit fails is assigned <span class="math inline">\(\operatorname{BIC} = +\infty\)</span>. The selected order minimizes the BIC, with exact ties broken lexicographically by fewer parameters, then by lower <span class="math inline">\(p\)</span>:</p>
+<p><span id="eq-arima-select"><span class="math display">\[
+(p^{*}, q^{*}) = \operatorname*{arg\,min}_{(p, q) \in \mathcal{O}} \;
+\big( \operatorname{BIC}(p, q),\; p + q,\; p \big).
+\tag{41}\]</span></span></p>
+<p>If every candidate’s fit fails, the run fails instead of producing a forecast.</p>
+<p><strong>Forecast.</strong> The selected model, already fit during selection and not refit, gives the one-step-ahead conditional mean of the next log return, <span class="math inline">\(\hat{y}_{\tau+1} = \mathbb{E}\left[ y_{\tau+1} \mid y_{\tau - L + 1}, \dots, y_{\tau} \right]\)</span>, which is converted to a price forecast:</p>
+<p><span id="eq-arima-forecast"><span class="math display">\[
+\hat{P}^{\text{ARIMA}}_{\tau+1} = P_{\tau} \exp\!\left( \hat{y}_{\tau+1} \right),
+\qquad
+\hat{P}^{\text{naive}}_{\tau+1} = P_{\tau}.
+\tag{42}\]</span></span></p>
+<p>The naive (random walk) forecast uses the same last close, so the two are directly comparable. Under <a href="#eq-arima-model" class="quarto-xref">Equation&nbsp;39</a>, <span class="math inline">\(P_\tau \exp(\hat{y}_{\tau+1})\)</span> is the conditional median of <span class="math inline">\(P_{\tau+1}\)</span>, not its conditional mean, which would include a factor <span class="math inline">\(\exp(\hat{\sigma}^2_{\tau+1} / 2)\)</span>, where <span class="math inline">\(\hat{\sigma}^2_{\tau+1}\)</span> is the one-step forecast variance.</p>
+</section>
+<section id="performance-metrics-and-comparison-with-naive-persistence-baseline" class="level3">
+<h3 class="anchored" data-anchor-id="performance-metrics-and-comparison-with-naive-persistence-baseline">3.2.3 Performance Metrics and Comparison With Naive Persistence Baseline</h3>
+<p>For one ticker, let <span class="math inline">\(\hat{P}^{A}_{s}\)</span> be the ARIMA forecast and <span class="math inline">\(\hat{P}^{N}_{s}\)</span> the naive forecast of the close on session <span class="math inline">\(s\)</span> (<a href="#eq-arima-forecast" class="quarto-xref">Equation&nbsp;42</a>), and <span class="math inline">\(P_s\)</span> the actual close. Let <span class="math inline">\(\mathcal{D}_0\)</span> be the <span class="math inline">\(E\)</span> most recent sessions with an actual close. The live forecast, which has no actual close yet, is never scored. The scored set <span class="math inline">\(\mathcal{D} \subseteq \mathcal{D}_0\)</span> keeps the sessions on which both forecasts exist, so both models are always scored on exactly the same days:</p>
+<p><span id="eq-fc-scored"><span class="math display">\[
+\mathcal{D} = \{ s \in \mathcal{D}_0 : \hat{P}^{A}_{s} \text{ and } \hat{P}^{N}_{s} \text{ are available} \},
+\qquad |\mathcal{D}| = n_{\text{eval}} \le E.
+\tag{43}\]</span></span></p>
+<p>With complete data, <span class="math inline">\(n_{\text{eval}} = E\)</span>. For a model <span class="math inline">\(M \in \{A, N\}\)</span>, the forecast error is <span class="math inline">\(e^{M}_{s} = \hat{P}^{M}_{s} - P_s\)</span>, in US dollars per share.</p>
+<p><strong>Error metrics.</strong> For each model:</p>
+<p><span id="eq-fc-errors"><span class="math display">\[
+\begin{aligned}
+\operatorname{RMSE}_M &amp;= \sqrt{ \frac{1}{n_{\text{eval}}} \sum_{s \in \mathcal{D}} \left( e^{M}_{s} \right)^2 }, \\
+\operatorname{MAE}_M &amp;= \frac{1}{n_{\text{eval}}} \sum_{s \in \mathcal{D}} \left| e^{M}_{s} \right|, \\
+\operatorname{MAPE}_M &amp;= \frac{100}{n_{\text{eval}}} \sum_{s \in \mathcal{D}} \frac{\left| e^{M}_{s} \right|}{P_s}.
+\end{aligned}
+\tag{44}\]</span></span></p>
+<p>RMSE and MAE are in dollars per share, so they cannot be compared across tickers with different price levels. MAPE is in percent and scale-free.</p>
+<p><strong>Comparison with the naive forecast.</strong> The ARIMA forecast is judged against the naive (persistence, or random walk) forecast <span class="math inline">\(\hat{P}^{N}_{s} = P_{s-1}\)</span>, the most recent observed close:</p>
+<p><span id="eq-fc-relative"><span class="math display">\[
+\operatorname{relMAE} = \frac{\operatorname{MAE}_A}{\operatorname{MAE}_N},
+\qquad
+\operatorname{Skill} = 1 - \operatorname{relMAE}.
+\tag{45}\]</span></span></p>
+<p><span class="math inline">\(\operatorname{relMAE} &lt; 1\)</span>, equivalently <span class="math inline">\(\operatorname{Skill} &gt; 0\)</span>, means ARIMA’s errors were smaller than the naive forecast’s on the same days. <span class="math inline">\(\operatorname{relMAE}\)</span> is undefined when <span class="math inline">\(\operatorname{MAE}_N = 0\)</span>. This ratio of out-of-sample errors is related to, but is not, Hyndman and Koehler’s MASE, which scales by the naive forecast’s in-sample error.</p>
+<p><strong>Directional accuracy.</strong> The ARIMA forecast’s predicted move from the last close is compared with the actual move, over the sessions on which the price actually moved:</p>
+<p><span id="eq-fc-direction"><span class="math display">\[
+\mathcal{D}_{\pm} = \{ s \in \mathcal{D} : P_s \ne \hat{P}^{N}_{s} \},
+\qquad
+\operatorname{DA}_A = \frac{1}{|\mathcal{D}_{\pm}|} \sum_{s \in \mathcal{D}_{\pm}}
+\mathbb{1}\!\left[ \operatorname{sgn}\!\big( \hat{P}^{A}_{s} - \hat{P}^{N}_{s} \big) = \operatorname{sgn}\!\big( P_s - \hat{P}^{N}_{s} \big) \right].
+\tag{46}\]</span></span></p>
+<p>A forecast of no move counts as incorrect. The naive forecast always predicts no move, so it has no directional accuracy.</p>
+<p><strong>Interpreting the comparison with the naive forecast.</strong> The persistence forecast is the natural benchmark for daily prices. If log prices follow a random walk, or more generally a martingale, then <span class="math inline">\(P_{s-1}\)</span> is already the best forecast of <span class="math inline">\(P_s\)</span> under squared error, up to a negligible drift term, and no model fit on past prices can be expected to beat it out of sample. The question these metrics answer is therefore whether ARIMA’s estimated drift and short-term autocorrelation improved on persistence, not whether ARIMA forecasts prices well in absolute terms. Four cautions apply:</p>
+<ol type="1">
+<li><strong>The two forecasts are nearly identical.</strong> By <a href="#eq-arima-forecast" class="quarto-xref">Equation&nbsp;42</a>, <span class="math inline">\(\hat{P}^{A}_{s} = \hat{P}^{N}_{s} \exp(\hat{y}_{s})\)</span>, and <span class="math inline">\(\hat{y}_s\)</span> is a small fraction of a typical daily move. Both forecasts’ errors are dominated by the same unpredictable price change <span class="math inline">\(P_s - P_{s-1}\)</span>, so <span class="math inline">\(\operatorname{relMAE}\)</span> is expected to be close to 1, and a small deviation from 1 is not, on its own, evidence of forecasting skill.</li>
+<li><strong>The sample is small and the errors are dependent.</strong> <span class="math inline">\(n_{\text{eval}}\)</span> is modest, and consecutive forecasts come from overlapping training windows, so the effective sample is smaller still. No formal test of equal accuracy (such as the Diebold–Mariano test) is applied, so the metrics should be read as descriptive.</li>
+<li><strong>Directional accuracy has a base rate.</strong> A model with positive estimated drift predicts an up move on most days, so its <span class="math inline">\(\operatorname{DA}_A\)</span> is close to the share of up days in <span class="math inline">\(\mathcal{D}_{\pm}\)</span>. Compare it with that share, not with 0.5.</li>
+<li><strong>Metrics are computed one ticker at a time.</strong> Ten tickers scored at once will show some apparent skill by chance alone.</li>
+</ol>
+</section>
+</section>
+<section id="results-and-discussion" class="level2">
+<h2 class="anchored" data-anchor-id="results-and-discussion">3.3 Results and Discussion</h2>
+<p>While I saw some success with the portfolio optimization, the time series forecasting with ARIMA was not as successful, with the best ARIMA mean absolute error (MAE) scores approximately tying with the naive model.</p>
+<p><strong>The candidate orders.</strong> The search over <span class="math inline">\(\mathcal{O}\)</span> (<a href="#eq-arima-candidates" class="quarto-xref">Equation&nbsp;38</a>) is deliberately small. Daily log returns of liquid assets have little linear autocorrelation, so a low-order model is the appropriate starting point, and a larger search mainly adds estimation noise and more opportunities to overfit.</p>
+<p>When <span class="math inline">\((1, 1) \in \mathcal{O}\)</span>, one identification issue applies. The ARMA(1,1) component of <a href="#eq-arima-model" class="quarto-xref">Equation&nbsp;39</a> is</p>
+<p><span id="eq-assume-arma11"><span class="math display">\[
+(1 - \phi L)\, u_s = (1 + \theta L)\, \varepsilon_s,
+\tag{47}\]</span></span></p>
+<p>where <span class="math inline">\(L\)</span> is the lag operator. If <span class="math inline">\(\theta = -\phi\)</span>, the two factors cancel and <span class="math inline">\(u_s = \varepsilon_s\)</span> is white noise for every value of <span class="math inline">\(\phi\)</span>. When the data are close to white noise, as daily returns typically are, the likelihood is nearly flat along the ridge <span class="math inline">\(\theta \approx -\phi\)</span>. The fitted <span class="math inline">\((\hat{\phi}, \hat{\theta})\)</span> can then be large and of opposite sign while describing a process with almost no autocorrelation, and they can change substantially between overlapping windows. Their one-step forecasts remain close to the drift <span class="math inline">\(m\)</span>, so the point forecasts are less affected than the coefficients. Individual ARMA(1,1) coefficient estimates should not be interpreted as evidence of strong dynamics.</p>
+<p>BIC is used rather than AIC because it penalizes additional parameters more heavily. The two criteria are</p>
+<p><span id="eq-assume-aic-bic"><span class="math display">\[
+\operatorname{AIC}(p, q) = -2 \ln \hat{\mathcal{L}}_{pq} + 2\, k_{pq},
+\qquad
+\operatorname{BIC}(p, q) = -2 \ln \hat{\mathcal{L}}_{pq} + k_{pq} \ln L,
+\tag{48}\]</span></span></p>
+<p>so BIC’s penalty per parameter exceeds AIC’s whenever <span class="math inline">\(\ln L &gt; 2\)</span>, that is, for any window of more than seven returns. BIC is also consistent: if the true order is in the candidate set, the probability of selecting it tends to 1 as <span class="math inline">\(L \to \infty\)</span>, whereas AIC tends to select orders that are too large. In a weak-signal setting, a stronger penalty favors the more parsimonious model, which is usually the better forecaster.</p>
+<p><strong>The evaluation sample.</strong> All accuracy metrics are computed over one evaluation window of <span class="math inline">\(E\)</span> sessions, ending on the as-of date. They describe one recent period, not the models’ long-run behavior. Two kinds of dependence make the effective sample smaller than <span class="math inline">\(n_{\text{eval}}\)</span>.</p>
+<ol type="1">
+<li><strong>Over time.</strong> Consecutive training windows share all but one observation, so consecutive ARIMA forecasts adjust the naive forecast by similar amounts. The per-session loss differential between the two models, <span id="eq-assume-lossdiff"><span class="math display">\[
+d_s = \left| e^{A}_{s} \right| - \left| e^{N}_{s} \right|,
+\qquad
+\operatorname{MAE}_A - \operatorname{MAE}_N = \frac{1}{n_{\text{eval}}} \sum_{s \in \mathcal{D}} d_s,
+\tag{49}\]</span></span> can therefore be autocorrelated, and volatility clustering makes the magnitudes of <span class="math inline">\(d_s\)</span> persistent. For a stationary series with autocorrelations <span class="math inline">\(\rho_k\)</span>, the variance of a mean of <span class="math inline">\(n\)</span> observations corresponds to an effective sample size of <span id="eq-assume-neff"><span class="math display">\[
+n_{\text{eff}} = \frac{n}{1 + 2 \sum_{k=1}^{n-1} \left( 1 - \frac{k}{n} \right) \rho_k},
+\tag{50}\]</span></span> which is smaller than <span class="math inline">\(n\)</span> when the <span class="math inline">\(\rho_k\)</span> are positive.</li>
+<li><strong>Across tickers.</strong> The tickers’ returns are correlated on the same days, and several are broad equity funds with overlapping holdings. The per-ticker metrics are therefore not independent replications. Apparent skill on several tickers at once can reflect one common market move.</li>
+</ol>
+<p>Results from different as-of dates are not independent either. Evaluation windows from consecutive runs overlap in all but a few sessions, so comparing many dates does not add many independent observations. When the training window length or <span class="math inline">\(E\)</span> differs between runs, as recorded in each run’s metadata, their metrics are computed on different samples and are not directly comparable.</p>
+<p><strong>Data caveats.</strong></p>
+<ol type="1">
+<li><strong>Hindsight universe.</strong> The tickers are a fixed set chosen at the time of writing. Assets that were delisted, or that would not have been chosen at the start of the period, are absent, so results may not generalize to other assets.</li>
+<li><strong>Adjusted prices and dividends.</strong> Prices are adjusted closes as returned by Massive.com. They are not assumed to include dividend adjustments. If they do not, the log returns in <a href="#eq-arima-logret" class="quarto-xref">Equation&nbsp;37</a> are price returns, and each ex-dividend date appears as a negative return. That return is predictable from the dividend calendar but not from past prices, so it adds to the forecast errors of both models alike. Adjusted prices can also be revised retroactively when a split or distribution occurs, so data downloaded on different days can differ for the same historical session.</li>
+<li><strong>Assets that trade outside exchange hours.</strong> Some tickers are exchange-traded funds whose underlying assets trade outside NYSE hours: bitcoin and ether trade continuously, and currencies trade around the clock on weekdays. For these, one model time step (one NYSE session) can span very different amounts of underlying trading, because a return from Friday’s close to Monday’s close includes the weekend. The variance of <span class="math inline">\(y_s\)</span> then depends on the calendar gap before session <span class="math inline">\(s\)</span>, a further departure from the constant-variance assumption of <a href="#eq-arima-model" class="quarto-xref">Equation&nbsp;39</a>.</li>
+<li><strong>Cached forecasts.</strong> Forecasts are computed once per as-of date and reused by later runs for the same date unless they are explicitly retrained. A re-run with different settings, or after a data revision, reproduces the stored forecasts rather than recomputing them, so reproducing the results exactly requires both the same data and a retrain.</li>
+</ol>
+</section>
+</section>
+<section id="integration-and-future-work" class="level1">
+<h1>4. Integration and Future Work</h1>
+<p>The optimization and forecasting components are currently evaluated independently. Forecast estimates are not used as expected-return inputs to portfolio optimization because the forecasting analysis does not demonstrate sufficient out-of-sample improvement over a naive persistence benchmark. Integration therefore remains a potential extension rather than an assumption of the current system. However, prior to integrating time series forecasts with the portfolio optimization, I would explore more sophiticated time series models that incorporate seasonality and exogenous variables, such as SARIMAX.</p>
 
 
 </section>

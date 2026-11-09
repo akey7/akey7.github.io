@@ -6,10 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Alicia M. Key, PhD">
-<meta name="dcterms.date" content="2026-11-06">
+<meta name="author" content="Alicia M. F. Key, PhD">
+<meta name="dcterms.date" content="2026-11-09">
 
-<title>Fuzzy System Research – Alicia’s Side Projects</title>
+<title>AliciaData Finance – Alicia M. F. Key, PhD - Quantitative Notes</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -117,7 +117,7 @@ window.Quarto = {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
-    <span class="navbar-title">Alicia’s Side Projects</span>
+    <span class="navbar-title">Alicia M. F. Key, PhD - Quantitative Notes</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -127,27 +127,19 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../about.html"> 
-<span class="menu-text">About</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../ai.html"> 
-<span class="menu-text">AI &amp; Deep Learning</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../blog.html"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Blog</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../math.html"> 
-<span class="menu-text">Math</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../physics_and_chemistry.html"> 
-<span class="menu-text">Physics &amp; Chemistry</span></a>
+    <a class="nav-link" href="../../random-notes.html"> 
+<span class="menu-text">Random Notes</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
   <li class="nav-item compact">
     <a class="nav-link" href="https://github.com/akey7"> <i class="bi bi-github" role="img">
 </i> 
@@ -174,7 +166,7 @@ window.Quarto = {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Fuzzy System Research</h1>
+      <h1 class="title">AliciaData Finance</h1>
                       </div>
   </div>
     
@@ -184,14 +176,14 @@ window.Quarto = {
       <div>
       <div class="quarto-title-meta-heading">Author</div>
       <div class="quarto-title-meta-contents">
-               <p>Alicia M. Key, PhD </p>
+               <p>Alicia M. F. Key, PhD </p>
             </div>
     </div>
       
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">November 6, 2026</p>
+        <p class="date">November 9, 2026</p>
       </div>
     </div>
     
@@ -203,16 +195,17 @@ window.Quarto = {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="3">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
   <li><a href="#project-overview" id="toc-project-overview" class="nav-link active" data-scroll-target="#project-overview">1. Project Overview</a>
   <ul class="collapse">
   <li><a href="#objectives" id="toc-objectives" class="nav-link" data-scroll-target="#objectives">1.1 Objectives</a></li>
-  <li><a href="#system-architecture" id="toc-system-architecture" class="nav-link" data-scroll-target="#system-architecture">1.2 System Architecture</a></li>
-  <li><a href="#data-sources" id="toc-data-sources" class="nav-link" data-scroll-target="#data-sources">1.3 Data Sources</a></li>
-  <li><a href="#reproducibility-and-software-environment" id="toc-reproducibility-and-software-environment" class="nav-link" data-scroll-target="#reproducibility-and-software-environment">1.4 Reproducibility and Software Environment</a></li>
+  <li><a href="#related-urls" id="toc-related-urls" class="nav-link" data-scroll-target="#related-urls">1.2 Related URLs</a></li>
+  <li><a href="#system-architecture" id="toc-system-architecture" class="nav-link" data-scroll-target="#system-architecture">1.3 System Architecture</a></li>
+  <li><a href="#data-sources" id="toc-data-sources" class="nav-link" data-scroll-target="#data-sources">1.4 Data Sources</a></li>
+  <li><a href="#reproducibility-and-software-environment" id="toc-reproducibility-and-software-environment" class="nav-link" data-scroll-target="#reproducibility-and-software-environment">1.5 Reproducibility and Software Environment</a></li>
   </ul></li>
   <li><a href="#portfolio-optimization" id="toc-portfolio-optimization" class="nav-link" data-scroll-target="#portfolio-optimization">2. Portfolio Optimization</a>
   <ul class="collapse">
@@ -260,7 +253,7 @@ window.Quarto = {
 <p>This project investigates two related quantitative modeling problems:</p>
 <ol type="1">
 <li><p><strong>Portfolio optimization:</strong> Can portfolio weights be optimized to maximize the Sharpe ratio, and does the resulting portfolio achieve better out-of-sample backtest performance than a naive equal-weight benchmark?</p></li>
-<li><p><strong>Time-series forecasting:</strong> Can short-horizon ARIMA forecasts of individual securities outperform a naive persistence benchmark under walk-forward evaluation?</p></li>
+<li><p><strong>Time-series forecasting:</strong> Can short-horizon ARIMA forecasts of individual securities outperform a naive persistence benchmark under out-of-sample walk-forward evaluation?</p></li>
 </ol>
 <p>In both analyses, model performance is evaluated out of sample against a simple naive benchmark. This provides a common standard for determining whether the additional modeling complexity introduced by optimization or statistical forecasting produces meaningful improvement over a straightforward baseline.</p>
 <p>In contrast to my other published projects, which focus primarily on life sciences and renewable-energy applications, this project uses public, widely understood financial data. It is intended to showcase quantitative modeling in a setting where the methodology and results can be evaluated without specialized domain knowledge in biology or renewable energy. I am the sole contributor to the project, including the quantitative methodology, software development, analysis, testing, and presentation of results.</p>
@@ -270,17 +263,25 @@ window.Quarto = {
 <li><a href="#time-series-forecasting">3. Time-Series Forecasting</a></li>
 </ul>
 </section>
+<section id="related-urls" class="level2">
+<h2 class="anchored" data-anchor-id="related-urls">1.2 Related URLs</h2>
+<ul>
+<li><a href="https://aliciadata.com">Live AliciaData Finance dashboard</a>: Dashboard with daily data and performance updates</li>
+<li><a href="https://github.com/akey7/aliciadata-finance-backend"><code>aliciadata-finance-backend</code> repo</a>: Analytical backend code repo that contains the analytical code described in the methods:</li>
+<li><a href="https://github.com/akey7/aliciadata-finance-frontend"><code>aliciadata-finance-frontend</code> repo</a>: Lightweight dashboard code that displays analytical results on a UI.</li>
+</ul>
+</section>
 <section id="system-architecture" class="level2">
-<h2 class="anchored" data-anchor-id="system-architecture">1.2 System Architecture</h2>
+<h2 class="anchored" data-anchor-id="system-architecture">1.3 System Architecture</h2>
 <p>The system consists of two repositories: a computational backend and a lightweight frontend. The backend retrieves market data, performs portfolio optimization and ARIMA forecasting using multicore processing, and delivers results to an S3 bucket. The frontend retrieves and displays these results, with minimal computational requirements. A defined data interface specifies the files and schemas exchanged between the two components.</p>
 <p>Implementation details are available in the <a href="https://github.com/akey7/fuzzy-system-research/blob/develop/docs/SYSTEM_DESIGN.md">backend system design documentation</a>.</p>
 </section>
 <section id="data-sources" class="level2">
-<h2 class="anchored" data-anchor-id="data-sources">1.3 Data Sources</h2>
+<h2 class="anchored" data-anchor-id="data-sources">1.4 Data Sources</h2>
 <p>Stock market data is downloaded from the <a href="https://massive.com/">Massive.com</a> API. Risk-free rate 3-month T-Bill data is downloaded from FRED (Federal Reserve Economic Data, maintained by the Federal Reserve Bank of St.&nbsp;Louis), series DTB3.</p>
 </section>
 <section id="reproducibility-and-software-environment" class="level2">
-<h2 class="anchored" data-anchor-id="reproducibility-and-software-environment">1.4 Reproducibility and Software Environment</h2>
+<h2 class="anchored" data-anchor-id="reproducibility-and-software-environment">1.5 Reproducibility and Software Environment</h2>
 <p>Both the backend and frontend are written in Python. On the backend, data that is downloaded is cached for each NYSE trading day, and data that is generated by the backend is saved for each NYSE trading day. On the frontend, the UI presents the prominent opportunity to select results for any day in the uploaded datasets.</p>
 </section>
 </section>
